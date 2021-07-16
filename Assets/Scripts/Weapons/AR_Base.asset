@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ac1bc66c770f24586881f3ee5316ad, type: 3}
+  m_Name: AR_Base
+  m_EditorClassIdentifier: 
+  weaponType: 1
+  element: 0
+  gunName: Auto Rifle
+  description: Description of Auto Rifle
+  flavourText: Flavour Text of Auto Rifle
+  weaponAttack: {fileID: 11400000, guid: 7e39ec5f04cd04646939906367536fa0, type: 2}

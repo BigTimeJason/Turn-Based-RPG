@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ac1bc66c770f24586881f3ee5316ad, type: 3}
+  m_Name: PR_Base
+  m_EditorClassIdentifier: 
+  weaponType: 2
+  element: 0
+  gunName: Pulse Rifle
+  description: Description of Pulse Rifle
+  flavourText: Flavour Text of Pulse Rifle
+  weaponAttack: {fileID: 11400000, guid: e2c191c5149ac964d9b2f4187d4a1d23, type: 2}
