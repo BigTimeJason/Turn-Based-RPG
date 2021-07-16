@@ -163,13 +163,16 @@ public class BattleStateMachine : MonoBehaviour
             currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text = "";
 
             button.enemyPrefabs = currentButtonTargets;
-            
+
+            int targetNum = 0;
             foreach(GameObject target in currentButtonTargets)
             {
-                if (i > 0)
+                if (targetNum > 0)
                 {
                     currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += ", " + target.name;
                 } else currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += target.name;
+
+                targetNum++;
             }
 
             currButton.SetActive(true);
