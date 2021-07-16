@@ -21,19 +21,23 @@ public class BattleStateMachine : MonoBehaviour
         INPUT2,
         DONE
     }
-
+    [Header("States")]
     public BattleState battleState;
     public HeroInputState heroInput;
 
+    [Header("Lists")]
     public List<GameObject> readyHeroes = new List<GameObject>();
     public List<HandleTurn> turnList = new List<HandleTurn>();
     public List<GameObject> heroes = new List<GameObject>();
     public List<GameObject> enemies = new List<GameObject>();
-    public List<GameObject> enemyTargetButtons = new List<GameObject>();
-    public List<GameObject> heroUI = new List<GameObject>();
 
-    public GameObject attackPanel;
+    [Header("UI")]
+    public GameObject heroPanel;
+    public GameObject actionPanel;
     public GameObject targetPanel;
+    public GameObject heroPanelBar;
+    public GameObject actionPanelButton;
+    public GameObject targetPanelButton;
 
     private HandleTurn heroChoice;
 
@@ -42,7 +46,7 @@ public class BattleStateMachine : MonoBehaviour
         battleState = BattleState.WAIT;
         heroInput = HeroInputState.ACTIVATE;
 
-        attackPanel.SetActive(false);
+        actionPanel.SetActive(false);
         targetPanel.SetActive(false);
 
         heroes.AddRange(GameObject.FindGameObjectsWithTag("Hero"));
@@ -50,19 +54,8 @@ public class BattleStateMachine : MonoBehaviour
 
         enemies.Sort((e1, e2) => e1.GetComponent<EnemyStateMachine>().character.slot.CompareTo(e2.GetComponent<EnemyStateMachine>().character.slot));
         heroes.Sort((h1, h2) => h1.GetComponent<HeroStateMachine>().character.slot.CompareTo(h2.GetComponent<HeroStateMachine>().character.slot));
-        heroUI.Sort((h1, h2) => h1.gameObject.name.CompareTo(h2.gameObject.name));
 
-        for (int i = 0; i < heroes.Count && i < heroUI.Count; i++)
-        {
-            HeroStateMachine hero = heroes[i].GetComponent<HeroStateMachine>();
-            hero.atb = heroUI[i].transform.Find("ATBBar").GetComponent<Slider>();
-            hero.healthUI = heroUI[i].transform.Find("HP").GetComponent<TextMeshProUGUI>();
-            hero.nameUI = heroUI[i].transform.Find("Name").GetComponent<TextMeshProUGUI>();
-            hero.updateUI();
-
-            heroUI[i].SetActive(true);
-            
-        }
+        GenerateHeroPanels();
     }
 
 
@@ -117,7 +110,9 @@ public class BattleStateMachine : MonoBehaviour
                     readyHeroes[0].transform.Find("Selector").gameObject.SetActive(true);
                     heroChoice = new HandleTurn();
 
-                    attackPanel.SetActive(true);
+                    actionPanel.SetActive(true);
+                    GenerateActionButtons();
+
                     heroInput = HeroInputState.WAITING;
                 }
                 break;
@@ -144,38 +139,73 @@ public class BattleStateMachine : MonoBehaviour
         turnList.Add(input);
     }
 
-    public void EnemyButtons()
+    public void GenerateHeroPanels()
     {
-        foreach(GameObject enemyButton in enemyTargetButtons)
+        foreach (Transform child in heroPanel.transform.Find("Spacer").transform)
         {
-            enemyButton.SetActive(false);
+            GameObject.Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < heroes.Count; i++)
+        {
+            GameObject currHero = Instantiate(heroPanelBar);
+            HeroStateMachine hero = heroes[i].GetComponent<HeroStateMachine>();
+
+            hero.nameUI = currHero.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+            hero.atb = currHero.transform.Find("ATBBar").GetComponent<Slider>();
+            hero.healthUI = currHero.transform.Find("HP").GetComponent<TextMeshProUGUI>();
+            hero.updateUI();
+
+            currHero.SetActive(true);
+            currHero.transform.parent = heroPanel.transform.Find("Spacer");
+        }
+    }
+
+    public void GenerateActionButtons()
+    {
+        foreach (Transform child in actionPanel.transform.Find("Spacer").transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        GameObject currButton = Instantiate(actionPanelButton);
+        currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text = readyHeroes[0].GetComponent<HeroStateMachine>().character.availableAttacks[0].attackName;
+        Button button = currButton.GetComponent<Button>();
+        button.onClick.AddListener(() => Input1());
+
+        currButton.transform.parent = actionPanel.transform.Find("Spacer");
+    }
+
+    public void GenerateTargetsButtons()
+    {
+        foreach (Transform child in targetPanel.transform.Find("Spacer").transform)
+        {
+            GameObject.Destroy(child.gameObject);
         }
 
         List<List<GameObject>> allEligibleTargets = heroChoice.attackerGameObject.GetComponent<HeroStateMachine>().GetEligibleTargets(heroChoice.attack);
         
-        for (int i = 0; i < allEligibleTargets.Count && i < enemyTargetButtons.Count; i++)
+        for (int i = 0; i < allEligibleTargets.Count; i++)
         {
-            List<GameObject> currentButtonTargets = allEligibleTargets[i];
-
-            GameObject currButton = enemyTargetButtons[i];
-
+            GameObject currButton = Instantiate(targetPanelButton);
             EnemySelectButton button = currButton.GetComponent<EnemySelectButton>();
-            currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text = "";
-
-            button.enemyPrefabs = currentButtonTargets;
+            button.enemyPrefabs = allEligibleTargets[i];
 
             int targetNum = 0;
-            foreach(GameObject target in currentButtonTargets)
+            currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text = "";
+
+            foreach (GameObject target in allEligibleTargets[i])
             {
                 if (targetNum > 0)
                 {
-                    currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += ", " + target.name;
+                    currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += "" + target.name;
                 } else currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += target.name;
 
                 targetNum++;
             }
 
             currButton.SetActive(true);
+            currButton.transform.parent = targetPanel.transform.Find("Spacer");
         }
     }
 
@@ -189,9 +219,9 @@ public class BattleStateMachine : MonoBehaviour
             heroChoice.type = "player";
             heroChoice.attack = readyHeroes[0].GetComponent<HeroStateMachine>().character.availableAttacks[0];
 
-            attackPanel.SetActive(false);
+            actionPanel.SetActive(false);
             targetPanel.SetActive(true);
-            EnemyButtons();
+            GenerateTargetsButtons();
         } else
         {
             Debug.Log("This attack has no elligible targets.");

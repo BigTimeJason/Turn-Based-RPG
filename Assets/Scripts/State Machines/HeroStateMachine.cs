@@ -52,7 +52,7 @@ public class HeroStateMachine : CharacterStateMachine
                     battleStateMachine.heroes.Remove(gameObject);
                     battleStateMachine.readyHeroes.Remove(gameObject);
                     selector.SetActive(false);
-                    battleStateMachine.attackPanel.SetActive(false);
+                    battleStateMachine.actionPanel.SetActive(false);
                     battleStateMachine.targetPanel.SetActive(false);
                     battleStateMachine.turnList.RemoveAll(turn => turn.attacker == gameObject.name);
                     battleStateMachine.heroInput = BattleStateMachine.HeroInputState.ACTIVATE;
@@ -88,7 +88,7 @@ public class HeroStateMachine : CharacterStateMachine
 
     public void updateUI()
     {
-        healthUI.text = "HP\t" + character.currHP;
+        healthUI.text = "" + character.currHP;
         nameUI.text = character.name;
     }
 }
