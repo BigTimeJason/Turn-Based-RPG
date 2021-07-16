@@ -97,7 +97,7 @@ public class BattleStateMachine : MonoBehaviour
                 } else if (turnList[0].type == "player" && enemies.Count > 0)
                 {
                     HeroStateMachine heroStateMachine = performer.GetComponent<HeroStateMachine>();
-                    heroStateMachine.target = turnList[0].targetGameObject;
+                    heroStateMachine.targets = turnList[0].targetGameObject;
                     heroStateMachine.currentState = HeroStateMachine.TurnState.ACTION;
                 }
 

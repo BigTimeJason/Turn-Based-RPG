@@ -17,23 +17,18 @@ public class CharacterStateMachine : MonoBehaviour
     }
 
     [Header("UI")]
-    public Slider atb;
-    public TextMeshProUGUI healthUI;
-    public TextMeshProUGUI nameUI;
     public GameObject selector;
 
     [Header("STATS")]
     public Character character;
     public TurnState currentState;
-    public List<GameObject> target = new List<GameObject>();
-
-    [Header("PRIVATE")]
-    private BattleStateMachine battleStateMachine;
-    private bool actionStarted;
-    private Vector3 startPosition;
-    private float atbProgress;
-    private readonly float animSpeed = 5f;
-    private bool isAlive = true;
+    public List<GameObject> targets = new List<GameObject>(); 
+    public BattleStateMachine battleStateMachine;
+    public Vector3 startPosition;
+    public float atbProgress;
+    public readonly float animSpeed = 5f;
+    public bool isAlive = true;
+    public bool actionStarted = false;
 
     void Start()
     {
@@ -42,56 +37,16 @@ public class CharacterStateMachine : MonoBehaviour
         battleStateMachine = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
         atbProgress = Random.Range(0, character.baseSpeed);
         startPosition = transform.position;
-
-        character.availableAttacks.Add(character.weapon.weaponAttack);
     }
 
     void Update()
     {
-        switch (currentState)
-        {
-            case TurnState.PROCESSING:
-                if (battleStateMachine.battleState == BattleStateMachine.BattleState.WAIT) UpdateATB();
-                break;
-            case TurnState.ADDTOLIST:
-                battleStateMachine.readyHeroes.Add(this.gameObject);
-                currentState = TurnState.WAITING;
-                break;
-            case TurnState.WAITING:
-                break;
-            case TurnState.SELECTING:
-                break;
-            case TurnState.ACTION:
-                StartCoroutine(TimeForAction());
-                break;
-            case TurnState.DEAD:
-                if (!isAlive)
-                {
-                    return;
-                }
-                else
-                {
-                    isAlive = false;
-                    gameObject.tag = "DeadHero";
 
-                    battleStateMachine.heroes.Remove(gameObject);
-                    battleStateMachine.readyHeroes.Remove(gameObject);
-                    selector.SetActive(false);
-                    battleStateMachine.attackPanel.SetActive(false);
-                    battleStateMachine.targetPanel.SetActive(false);
-                    battleStateMachine.turnList.RemoveAll(turn => turn.attacker == gameObject.name);
-                    battleStateMachine.heroInput = BattleStateMachine.HeroInputState.ACTIVATE;
-                }
-                break;
-            default:
-                break;
-        }
     }
 
-    void UpdateATB()
+    public virtual void UpdateATB()
     {
         atbProgress += Time.deltaTime * character.currSpeed;
-        atb.value = atbProgress;
 
         if (atbProgress >= 1)
         {
@@ -99,7 +54,7 @@ public class CharacterStateMachine : MonoBehaviour
         }
     }
 
-    private IEnumerator TimeForAction()
+    public IEnumerator TimeForAction()
     {
         if (actionStarted)
         {
@@ -110,7 +65,7 @@ public class CharacterStateMachine : MonoBehaviour
 
         // Animate Character
         //Vector3 targetPosition = new Vector3(target.transform.position.x - 5, target.transform.position.y);
-        Vector3 targetPosition = transform.position - new Vector3(-2, 0);
+        Vector3 targetPosition = transform.position + new Vector3(0, 1);
 
         while (MoveTowards(targetPosition))
         {
@@ -120,7 +75,7 @@ public class CharacterStateMachine : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Damage
-
+        DealDamage();
 
         while (MoveTowards(startPosition))
         {
@@ -143,15 +98,22 @@ public class CharacterStateMachine : MonoBehaviour
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
     }
 
-    public void TakeDamage(float dmg)
+    public virtual void TakeDamage(float dmg)
     {
         character.currHP -= dmg;
-        healthUI.text = "HP\t" + character.currHP;
 
         if (character.currHP <= 0)
         {
             character.currHP = 0;
             currentState = TurnState.DEAD;
+        }
+    }
+    private void DealDamage()
+    {
+        for (int i = 0; i < targets.Count; i++)
+        {
+            float dmg = battleStateMachine.turnList[0].attack.damage[i];
+            targets[i].GetComponent<CharacterStateMachine>().TakeDamage(dmg);
         }
     }
 
@@ -163,15 +125,23 @@ public class CharacterStateMachine : MonoBehaviour
     public List<List<GameObject>> GetEligibleTargets(BaseAttack attack)
     {
         List<List<GameObject>> eligibleTargets = new List<List<GameObject>>();
+        List<GameObject> team;
+        if (gameObject.CompareTag("Hero"))
+        {
+            team = battleStateMachine.enemies;
+        } else
+        {
+            team = battleStateMachine.heroes;
+        }
         if (attack.damage.Length == 1)
         {
             Debug.Log("You selected an attack with 1 target.");
-            for (int i = 0; i < battleStateMachine.enemies.Count; i++)
+            for (int i = 0; i < team.Count; i++)
             {
                 if (i >= attack.minRange - 1 && i <= attack.maxRange - 1)
                 {
-                    Debug.Log("This character was in range of this 1 target attack: " + battleStateMachine.enemies[i].name);
-                    eligibleTargets.Add(new List<GameObject> { battleStateMachine.enemies[i] });
+                    Debug.Log("This character was in range of this 1 target attack: " + team[i].name);
+                    eligibleTargets.Add(new List<GameObject> { team[i] });
                 }
             }
         }
@@ -179,7 +149,7 @@ public class CharacterStateMachine : MonoBehaviour
         {
             int option = 0;
             Debug.Log("You selected an attack that hits multiple targets.");
-            for (int i = 0; i <= battleStateMachine.enemies.Count - attack.damage.Length; i++)
+            for (int i = 0; i <= team.Count - attack.damage.Length; i++)
             {
                 if (i >= attack.minRange - 1 && i <= attack.maxRange - 1)
                 {
@@ -188,12 +158,12 @@ public class CharacterStateMachine : MonoBehaviour
                     {
                         if (attack.damage[j] != 0)
                         {
-                            Debug.Log("This character was in range of this AoE attack: " + battleStateMachine.enemies[j + i].name);
-                            eligibleTargets[option].Add(battleStateMachine.enemies[j + i]);
+                            Debug.Log("This character was in range of this AoE attack: " + team[j + i].name);
+                            eligibleTargets[option].Add(team[j + i]);
                         }
                         else
                         {
-                            Debug.Log("Character starting at position " + j + " (" + battleStateMachine.enemies[j + i].name + ") was in range, but the attack didn't have a damage value at this point.");
+                            Debug.Log("Character starting at position " + j + " (" + team[j + i].name + ") was in range, but the attack didn't have a damage value at this point.");
                         }
                     }
                     option++;
@@ -212,11 +182,5 @@ public class CharacterStateMachine : MonoBehaviour
     public bool HasEligibleTargets(List<List<GameObject>> eligibleTargets)
     {
         return eligibleTargets.Count != 0;
-    }
-
-    public void updateUI()
-    {
-        healthUI.text = "HP\t" + character.currHP;
-        nameUI.text = character.name;
     }
 }

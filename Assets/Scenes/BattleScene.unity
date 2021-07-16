@@ -2078,9 +2078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1781ef53d11efd41abb66340c5cbd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atb: {fileID: 1901108039}
-  healthUI: {fileID: 0}
-  nameUI: {fileID: 0}
   selector: {fileID: 113264246}
   character:
     name: Titan
@@ -2092,7 +2089,15 @@ MonoBehaviour:
     weapon: {fileID: 11400000, guid: 1997765a295926a4fa0bc8f20b85ebff, type: 2}
     availableAttacks: []
   currentState: 0
-  target: []
+  targets: []
+  battleStateMachine: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  atbProgress: 0
+  isAlive: 1
+  actionStarted: 0
+  atb: {fileID: 1901108039}
+  healthUI: {fileID: 0}
+  nameUI: {fileID: 0}
 --- !u!212 &981435248
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3003,9 +3008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1781ef53d11efd41abb66340c5cbd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atb: {fileID: 1194004233}
-  healthUI: {fileID: 0}
-  nameUI: {fileID: 0}
   selector: {fileID: 2096520371}
   character:
     name: Hunter
@@ -3017,7 +3019,15 @@ MonoBehaviour:
     weapon: {fileID: 11400000, guid: 65af47daa13c7e843bd4ed714f229f7e, type: 2}
     availableAttacks: []
   currentState: 0
-  target: []
+  targets: []
+  battleStateMachine: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  atbProgress: 0
+  isAlive: 1
+  actionStarted: 0
+  atb: {fileID: 1194004233}
+  healthUI: {fileID: 0}
+  nameUI: {fileID: 0}
 --- !u!212 &1623489816
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4279,6 +4289,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
   currentState: 0
   targets: []
+  battleStateMachine: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+  atbProgress: 0
+  isAlive: 1
+  actionStarted: 0
 --- !u!1 &2096520371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2069083460239527346, guid: f8dd71f9378e19b498a0b04443df4e17, type: 3}
@@ -4331,7 +4346,7 @@ PrefabInstance:
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.availableAttacks.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 954201da45715b94390f36ca5feefb57, type: 2}
+      objectReference: {fileID: 11400000, guid: 8b71770f0e39d024b9c1670b908bd583, type: 2}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.availableAttacks.Array.data[1]
       value: 

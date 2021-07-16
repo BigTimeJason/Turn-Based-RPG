@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32a9c202a0091b4f83967b6ce19f510, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: 
-  attackName: 
-  description: 
-  damage: []
-  minRange: 0
-  maxRange: 0
+  attackName: Spaced Attack
+  description: 1 0 1
+  damage:
+  - 1
+  - 0
+  - 1
+  minRange: 2
+  maxRange: 3
