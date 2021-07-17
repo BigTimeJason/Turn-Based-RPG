@@ -37,11 +37,10 @@ public class CharacterStateMachine : MonoBehaviour
         battleStateMachine = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
         atbProgress = Random.Range(0, character.baseSpeed);
         startPosition = transform.position;
-    }
 
-    void Update()
-    {
-
+        Action meleeAttack = Action.CreateInstance<Action>();
+        meleeAttack.Init("Melee", "A melee attack", new float[] { 1.2f }, 1, 1);
+        character.availableActions.Add(new CharacterAction(new List<Action>() {meleeAttack}));
     }
 
     public virtual void UpdateATB()
@@ -64,7 +63,6 @@ public class CharacterStateMachine : MonoBehaviour
         actionStarted = true;
 
         // Animate Character
-        //Vector3 targetPosition = new Vector3(target.transform.position.x - 5, target.transform.position.y);
         Vector3 targetPosition = transform.position + new Vector3(0, 1);
 
         while (MoveTowards(targetPosition))
@@ -122,7 +120,7 @@ public class CharacterStateMachine : MonoBehaviour
         return eligibleTargets[Random.Range(0, eligibleTargets.Count)];
     }
 
-    public List<List<GameObject>> GetEligibleTargets(BaseAttack attack)
+    public List<List<GameObject>> GetEligibleTargets(Action attack)
     {
         List<List<GameObject>> eligibleTargets = new List<List<GameObject>>();
         List<GameObject> team;

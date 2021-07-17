@@ -15,5 +15,11 @@ public class Character
     public float currSpeed;
 
     public BaseWeapon weapon;
-    public List<BaseAttack> availableAttacks = new List<BaseAttack>();
+    public List<CharacterAction> availableActions = new List<CharacterAction>();
+
+    public void AddAction(CharacterAction action, string name)
+    {
+        availableActions.Add(action);
+        availableActions[availableActions.Count - 1].name = name;
+    }
 }

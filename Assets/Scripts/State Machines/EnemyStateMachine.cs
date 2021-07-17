@@ -31,12 +31,13 @@ public class EnemyStateMachine : CharacterStateMachine
 
     void ChooseAction()
     {
-        BaseAttack currentAttack = character.availableAttacks[Random.Range(0, character.availableAttacks.Count)];
+        int selection = Random.Range(0, character.availableActions.Count);
+        Action currentAttack = character.availableActions[selection].GetAction(Random.Range(0, character.availableActions[selection].GetActions().Count));
         if (GetEligibleTargets(currentAttack).Count == 0)
         {
             return;
         }
-        HandleTurn attack = new HandleTurn(character.name, "enemy", gameObject, PickTargetFromEligibleTargets(GetEligibleTargets(currentAttack)), character.availableAttacks[Random.Range(0, character.availableAttacks.Count)]);
+        HandleTurn attack = new HandleTurn(character.name, "enemy", gameObject, PickTargetFromEligibleTargets(GetEligibleTargets(currentAttack)), currentAttack);
         battleStateMachine.AddAction(attack);
     }
 }

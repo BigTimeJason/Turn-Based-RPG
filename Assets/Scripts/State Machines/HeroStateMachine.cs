@@ -19,7 +19,7 @@ public class HeroStateMachine : CharacterStateMachine
         atbProgress = Random.Range(0, character.baseSpeed);
         startPosition = transform.position;
 
-        character.availableAttacks.Add(character.weapon.weaponAttack);
+        character.AddAction(new CharacterAction(new List<Action>(){ character.weapon.weaponAttack }), character.weapon.weaponAttack.attackName);
     }
 
     void Update()
@@ -86,7 +86,7 @@ public class HeroStateMachine : CharacterStateMachine
         }
     }
 
-    public void updateUI()
+    public void UpdateUI()
     {
         healthUI.text = "" + character.currHP;
         nameUI.text = character.name;

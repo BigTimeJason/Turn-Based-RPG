@@ -9,11 +9,11 @@ public class HandleTurn
     public string type;
     public GameObject attackerGameObject;
     public List<GameObject> targetGameObject = new List<GameObject>();
-    public BaseAttack attack;
+    public Action attack;
 
     public HandleTurn() { }
 
-    public HandleTurn(string attacker, string type, GameObject attackerGameObject, List<GameObject> targetGameObjects, BaseAttack attack)
+    public HandleTurn(string attacker, string type, GameObject attackerGameObject, List<GameObject> targetGameObjects, Action attack)
     {
         this.attacker = attacker;
         this.type = type;
