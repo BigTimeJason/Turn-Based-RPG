@@ -13,13 +13,6 @@ public class BaseWeapon : ScriptableObject
         PULSERIFLE,
         SCOUTRIFLE,
     }
-    public enum Element
-    {
-        KINETIC,
-        SOLAR,
-        VOID,
-        ARC,
-    }
 
     public WeaponType weaponType = WeaponType.HANDCANNON;
     public Element element = Element.KINETIC;

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32a9c202a0091b4f83967b6ce19f510, type: 3}
   m_Name: PR_Attack
   m_EditorClassIdentifier: 
-  attackName: Burst Fire
+  targetType: 1
+  element: 0
+  actionName: Pulse Rifle Burst
   description: Fire a spray of bullets effects at all ranges.
   damage:
   - 0.8

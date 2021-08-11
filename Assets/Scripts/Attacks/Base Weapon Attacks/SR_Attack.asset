@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32a9c202a0091b4f83967b6ce19f510, type: 3}
   m_Name: SR_Attack
   m_EditorClassIdentifier: 
-  attackName: Precision Shot
+  targetType: 1
+  element: 0
+  actionName: Scout Rifle Shot
   description: Fire a precise shot at long range.
   damage:
   - 1.2

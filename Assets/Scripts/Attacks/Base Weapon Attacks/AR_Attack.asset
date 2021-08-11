@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32a9c202a0091b4f83967b6ce19f510, type: 3}
   m_Name: AR_Attack
   m_EditorClassIdentifier: 
-  attackName: Spray
+  targetType: 1
+  element: 0
+  actionName: Auto Rifle Spray
   description: Fire a spray of bullets effective at close to mid ranges.
   damage:
   - 1

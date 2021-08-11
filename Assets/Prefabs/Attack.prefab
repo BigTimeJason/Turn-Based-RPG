@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8030854906836091970}
   - component: {fileID: 2271166641201423331}
   - component: {fileID: 2242346168883603264}
+  - component: {fileID: 136971580262655240}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -138,10 +139,24 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: 34
+  m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &136971580262655240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470631705456222387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ae65642ba28a24390c7c858d656345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: This is an attack
+  header: Deals X, at targets
 --- !u!1 &8254804275201661257
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,8 +224,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Action
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8d4a25cf24f50f4c9e9950fa6233305, type: 2}
-  m_sharedMaterial: {fileID: -3968190946437029073, guid: c8d4a25cf24f50f4c9e9950fa6233305, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
