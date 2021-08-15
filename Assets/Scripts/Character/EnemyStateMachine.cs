@@ -41,6 +41,10 @@ public class EnemyStateMachine : CharacterStateMachine
                     battleStateMachine.UpdateCharacterPositions();
                 }
                 break;
+            case TurnState.SELECTING:
+                break;
+            case TurnState.WON:
+                break;
             default:
                 break;
         }

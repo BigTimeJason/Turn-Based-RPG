@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using System.Linq;
 
 public class CharacterStateMachine : MonoBehaviour
 {
@@ -13,13 +12,16 @@ public class CharacterStateMachine : MonoBehaviour
         WAITING,
         SELECTING,
         ACTION,
-        DEAD
+        DEAD,
+        WON
     }
 
     [Header("UI")]
     public GameObject selector;
     public GameObject targeter;
+    public Transform gunBarrel;
     public Animator animator;
+    public ParticleSystem shieldParticles;
 
     [Header("STATS")]
     public Character character;
@@ -62,10 +64,6 @@ public class CharacterStateMachine : MonoBehaviour
                 currentState = TurnState.WAITING;
                 break;
             case TurnState.WAITING:
-                if (animator != null)
-                {
-                    animator.Play("Ready");
-                }
                 break;
             case TurnState.ACTION:
                 StartCoroutine(TimeForAction());
@@ -89,6 +87,10 @@ public class CharacterStateMachine : MonoBehaviour
                     battleStateMachine.CharacterDied(gameObject);
                 }
                 break;
+            case TurnState.SELECTING:
+                break;
+            case TurnState.WON:
+                break;
             default:
                 break;
         }
@@ -106,10 +108,6 @@ public class CharacterStateMachine : MonoBehaviour
 
     public IEnumerator TimeForAction()
     {
-        if (animator != null)
-        {
-            animator.Play("Firing");
-        }
         if (actionStarted)
         {
             yield break;
@@ -164,18 +162,30 @@ public class CharacterStateMachine : MonoBehaviour
         {
             if (character.shieldElement == element)
             {
-                character.shieldCurrHP -= dmg * 2;
-            }
-
-            if (character.shieldCurrHP <= 0)
+                dmg = dmg * 2;
+                character.shieldCurrHP -= dmg;
+                if (character.shieldCurrHP <= 0)
+                {
+                    character.shieldCurrHP = 0;
+                    ParticleSystem.MainModule settings = shieldParticles.main;
+                    settings.startColor = new ParticleSystem.MinMaxGradient(GetColours.GetColourOfElement(element));
+                    shieldParticles.Play();
+                }
+            } else
             {
-                character.shieldCurrHP = 0;
+                character.shieldCurrHP -= dmg * 0.5f;
+                if (character.shieldCurrHP <= 0)
+                {
+                    character.shieldCurrHP = 0;
+                }
             }
         }
         else
         {
             character.currHP -= dmg;
         }
+
+        DamageNumbers.Instance.Show(dmg, this.gameObject);
 
         if (character.currHP <= 0)
         {
@@ -196,7 +206,6 @@ public class CharacterStateMachine : MonoBehaviour
             {
                 float dmg = battleStateMachine.turnList[0].attack.damage[i] * (character.currPower / 10) + (Random.Range(-character.currPower/100, character.currPower / 100));
                 dmg = (int)dmg;
-                DamageNumbers.Instance.Show(dmg, battleStateMachine.turnList[0].targetGameObjects);
                 targets[i].GetComponent<CharacterStateMachine>().TakeDamage(dmg, battleStateMachine.turnList[0].attack.element);
             }
         }
@@ -266,8 +275,11 @@ public class CharacterStateMachine : MonoBehaviour
         return eligibleTargets.Count != 0;
     }
 
-    public void Draw()
+    public void FireGunEffects()
     {
-        LineEffects.Instance.Draw(this.gameObject, targets[0]);
+        if (targets?.Any() == true)
+        {
+            LineEffects.Instance.Fire(gunBarrel.position, targets, character.weapon.element);
+        }
     }
 }

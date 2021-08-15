@@ -11,8 +11,14 @@ public class HeroStateMachine : CharacterStateMachine
     public TextMeshProUGUI healthUI;
     public TextMeshProUGUI nameUI;
 
+    public bool isRunning;
+
     public override void InitBattle()
     {
+        if (animator != null)
+        {
+            animator.Play("Idle");
+        }
         selector.SetActive(false);
         currentState = TurnState.PROCESSING;
         startPosition = transform.position;
@@ -21,7 +27,11 @@ public class HeroStateMachine : CharacterStateMachine
         meleeAttack.Init(TargetType.ENEMY, character.offenseElement, "Melee", "A melee attack", new float[] { 1.2f }, 1, 1);
         character.availableActions.Add(new CharacterAction(new List<Action>() { meleeAttack }));
 
-        if (character.weapon != null) character.AddAction(new CharacterAction(new List<Action>() { character.weapon.weaponAttack }), character.weapon.weaponAttack.actionName);
+        if (character.weapon != null)
+        {
+            character.weapon.weaponAttack.element = character.weapon.element;
+            character.AddAction(new CharacterAction(new List<Action>() { character.weapon.weaponAttack }), character.weapon.weaponAttack.actionName);
+        }
     }
 
     void Update()
@@ -31,24 +41,58 @@ public class HeroStateMachine : CharacterStateMachine
             case TurnState.PROCESSING:
                 //if (battleStateMachine.battleState == BattleStateMachine.BattleState.PRELOAD) UpdateATBUI();
                 if (battleStateMachine.battleState == BattleStateMachine.BattleState.WAIT) UpdateATB();
+
+                if (isRunning)
+                {
+                    if(animator != null)
+                    {
+
+                    }
+                }
                 break;
             case TurnState.ADDTOLIST:
                 battleStateMachine.readyHeroes.Add(this.gameObject);
                 currentState = TurnState.WAITING;
+                if (isRunning)
+                {
+                    if (animator != null)
+                    {
+
+                    }
+                }
                 break;
             case TurnState.WAITING:
+                if (isRunning)
+                {
+                    if (animator != null)
+                    {
+
+                    }
+                } else if (animator != null)
+                {
+                    animator.Play("Waiting");
+                }
                 break;
             case TurnState.SELECTING:
                 break;
             case TurnState.ACTION:
+                if (animator != null)
+                {
+                    animator.Play(battleStateMachine.turnList[0].attack.animation);
+                }
                 StartCoroutine(TimeForAction());
                 break;
             case TurnState.DEAD:
                 if (!isAlive)
                 {
                     return;
-                } else
+                }
+                else
                 {
+                    if (animator != null)
+                    {
+                        animator.Play("Dead");
+                    }
                     isAlive = false;
                     gameObject.tag = "DeadHero";
 
@@ -64,6 +108,12 @@ public class HeroStateMachine : CharacterStateMachine
                     battleStateMachine.CharacterDied(gameObject);
                     battleStateMachine.UpdateCharacterPositions();
                     //battleStateMachine.battleState = BattleStateMachine.BattleState.CHECKALIVE;
+                }
+                break;
+            case TurnState.WON:
+                if (animator != null)
+                {
+                    animator.Play("Victory");
                 }
                 break;
             default:
@@ -93,18 +143,32 @@ public class HeroStateMachine : CharacterStateMachine
         {
             if (character.shieldElement == element)
             {
-                character.shieldCurrHP -= dmg * 2;
+                dmg = dmg * 2;
+                character.shieldCurrHP -= dmg;
+                if (character.shieldCurrHP <= 0)
+                {
+                    character.shieldCurrHP = 0;
+                    ParticleSystem.MainModule settings = shieldParticles.main;
+                    settings.startColor = new ParticleSystem.MinMaxGradient(GetColours.GetColourOfElement(element));
+                    shieldParticles.Play();
+                }
             }
-
-            if (character.shieldCurrHP <= 0)
+            else
             {
-                character.shieldCurrHP = 0;
+                character.shieldCurrHP -= dmg * 0.5f;
+                if (character.shieldCurrHP <= 0)
+                {
+                    character.shieldCurrHP = 0;
+                }
             }
         }
         else
         {
             character.currHP -= dmg;
         }
+        StartCoroutine(TakeDamageAnimation(dmg));
+
+        DamageNumbers.Instance.Show(dmg, this.gameObject);
 
         if (character.currHP <= 0)
         {
@@ -114,9 +178,32 @@ public class HeroStateMachine : CharacterStateMachine
         healthUI.text = "" + character.currHP;
     }
 
+    IEnumerator TakeDamageAnimation(float dmg)
+    {
+        if (animator != null && dmg > 0)
+        {
+            animator.Play("Hurt");
+        }
+        yield return new WaitForSeconds(1f);
+        if (animator != null)
+        {
+            animator.Play("Idle");
+        }
+    }
+
     public void UpdateUI()
     {
         healthUI.text = "" + character.currHP;
         nameUI.text = character.name;
+    }
+
+    public void StartRun()
+    {
+        isRunning = true;
+    }
+
+    public void EndRun()
+    {
+        isRunning = false;
     }
 }

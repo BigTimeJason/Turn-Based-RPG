@@ -16,7 +16,7 @@ public class Action : ScriptableObject
     public int minRange = 1;
     public int maxRange = 4;
 
-    public void Init(TargetType targetType, Element element, string actionName, string description, float[] damage, int minRange, int maxRange)
+    public void Init(TargetType targetType, Element element, string actionName, string description, float[] damage, int minRange, int maxRange, string animation = "Idle")
     {
         this.targetType = targetType;
         this.element = element;
@@ -25,6 +25,7 @@ public class Action : ScriptableObject
         this.damage = damage;
         this.minRange = minRange;
         this.maxRange = maxRange;
+        this.animation = animation;
     }
 
     public void Print()

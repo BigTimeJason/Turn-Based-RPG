@@ -71,6 +71,7 @@ public class BattleStateMachine : MonoBehaviour
     public GameObject actionPanelButton;
     public GameObject targetPanelButton;
     public GameObject attackNameUI;
+    public GameObject runButton;
     public float animTime;
 
     [Header("Camera")]
@@ -120,6 +121,7 @@ public class BattleStateMachine : MonoBehaviour
         GenerateHeroPanels();
         actionPanel.SetActive(false);
         targetPanel.SetActive(false);
+        //runButton = GameObject.Find("RunButton"); todo
     }
 
     void AnimateCharactersIn()
@@ -282,7 +284,10 @@ public class BattleStateMachine : MonoBehaviour
                     actionPanel.SetActive(true);
                     DestroyActionButtons();
                     actionPanel.transform.localScale = new Vector3(1, 0);
-                    actionPanel.transform.DOScaleY(1, animTime).OnComplete(() => { GenerateActionButtons(readyHeroes[0].GetComponent<HeroStateMachine>().character.availableActions); });
+                    actionPanel.transform.DOScaleY(1, animTime).OnComplete(() => {
+                        GenerateActionButtons(readyHeroes[0].GetComponent<HeroStateMachine>().character.availableActions);
+
+                    });
 
                     heroInput = HeroInputState.WAITING;
                 }
@@ -513,7 +518,7 @@ public class BattleStateMachine : MonoBehaviour
     public void ClearPanels()
     {
         targetPanel.SetActive(false);
-         actionPanel.SetActive(false);
+        actionPanel.SetActive(false);
 
         foreach (GameObject enemy in enemies)
         {
@@ -607,6 +612,21 @@ public class BattleStateMachine : MonoBehaviour
         heroInput = HeroInputState.DONE;
     }
 
+    public void StartRun()
+    {
+        foreach(GameObject hero in heroes)
+        {
+            hero.GetComponent<HeroStateMachine>().StartRun();
+        }
+    }
+    public void EndRun()
+    {
+        foreach (GameObject hero in heroes)
+        {
+            hero.GetComponent<HeroStateMachine>().EndRun();
+        }
+    }
+
     public void Push(GameObject character, int pushed)
     {
         if (character.CompareTag("Hero"))
@@ -636,11 +656,16 @@ public class BattleStateMachine : MonoBehaviour
         UpdateCharacterPositions();
     }
 
+    public void Swap()
+    {
+
+    }
+
     public void HeroInputDone()
     {
         turnList.Add(heroChoice);
         ClearPanels();
-        heroInput = HeroInputState.ENDATTACK;
+        heroInput = HeroInputState.ACTIVATE;
         hasSelectedAttack = false;
         readyHeroes[0].transform.Find("Selector").gameObject.SetActive(false);
         readyHeroes.RemoveAt(0);

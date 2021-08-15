@@ -23,15 +23,12 @@ public class DamageNumbers : MonoBehaviour
         }
     }
 
-    public void Show(float damage, List<GameObject> targets)
+    public void Show(float damage, GameObject target)
     {
-        foreach (GameObject target in targets) {
-            GameObject curr = Instantiate(damageNumberPrefab, this.transform);
-            curr.transform.position = target.transform.position;
-            curr.GetComponent<TextMeshProUGUI>().SetText(""+damage);
-            curr.transform.DOMoveY(curr.transform.position.y + 2, 3).OnComplete(() => { Destroy(curr); });
-            curr.GetComponent<TextMeshProUGUI>().DOColor(new Color(0, 0, 0, 0), 1);
-        }
-        
+        GameObject curr = Instantiate(damageNumberPrefab, this.transform);
+        curr.transform.position = target.transform.position;
+        curr.GetComponent<TextMeshProUGUI>().SetText("" + damage);
+        curr.transform.DOMoveY(curr.transform.position.y + 2, 3).OnComplete(() => { Destroy(curr); });
+        curr.GetComponent<TextMeshProUGUI>().DOColor(new Color(0, 0, 0, 0), 1);
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PR_Base
   m_EditorClassIdentifier: 
   weaponType: 2
-  element: 0
+  element: 1
   gunName: Pulse Rifle
   description: Description of Pulse Rifle
   flavourText: Flavour Text of Pulse Rifle

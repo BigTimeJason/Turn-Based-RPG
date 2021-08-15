@@ -24,13 +24,27 @@ public class LineEffects : MonoBehaviour
         }
     }
 
-    public void Draw(GameObject source, GameObject target)
+    public void Fire(Vector3 source, List<GameObject> gameObjects, Element element)
     {
+        //lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, source.transform.position);
-        lineRenderer.SetPosition(1, target.transform.position + new Vector3(Random.Range(-variance, variance), Random.Range(-variance, variance)));
+
+        float alpha = 1.0f;
+        Gradient gradient = new Gradient();
+        gradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(GetColours.GetColourOfElement(element), 0), new GradientColorKey(GetColours.GetColourOfElement(element), 1.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
+        );
+        lineRenderer.colorGradient = gradient;
+
+        //lineRenderer.SetColors(GetColours.GetColourOfElement(element), GetColours.GetColourOfElement(element));
+
+        //Debug.Log(GetColours.GetColourOfElement(element));
+        lineRenderer.SetPosition(0, source);
+        lineRenderer.SetPosition(1, gameObjects[Random.Range(0, gameObjects.Count)].transform.position + new Vector3(Random.Range(-variance, variance), Random.Range(-variance, variance)));
     }
 
     private void Update()
