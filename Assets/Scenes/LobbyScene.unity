@@ -476,7 +476,7 @@ MonoBehaviour:
       actions:
       - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
   level: 3
-  prerequisite: 0
+  prerequisite: 2
   canClick: 0
 --- !u!61 &211755845
 BoxCollider2D:
