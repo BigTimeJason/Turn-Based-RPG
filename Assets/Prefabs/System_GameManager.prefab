@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2706342599915851622}
   - component: {fileID: 2706342599915851617}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: System_GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,3 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e039daf7bb82f9143845c6b44eab0393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroes: []
+  enemies: []
+  level: 0
+  missionLevel: 0
+  completedLevels: 00000000

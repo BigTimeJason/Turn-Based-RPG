@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class DialogueLine
@@ -11,4 +10,10 @@ public class DialogueLine
     public string characterName;
     public string dialogue;
     public AudioClip clip;
+}
+
+[System.Serializable] 
+public class LevelDialogue
+{
+    public DialogueLine[] levelDialogue;
 }

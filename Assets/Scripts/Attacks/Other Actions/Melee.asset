@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e32a9c202a0091b4f83967b6ce19f510, type: 3}
-  m_Name: HEALING POTION
+  m_Name: Melee
   m_EditorClassIdentifier: 
-  targetType: 0
+  targetType: 1
   element: 0
-  actionName: HEALING POTION
-  description: super healing potion woo
+  actionName: Knife
+  description: A melee attack, dealing 100% damage. [1]
+  animation: Firing
   damage:
-  - -1
+  - 1
   minRange: 1
-  maxRange: 4
+  maxRange: 1

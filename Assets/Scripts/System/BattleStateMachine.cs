@@ -54,6 +54,7 @@ public class BattleStateMachine : MonoBehaviour
     [SerializeField]
     private HandleTurn heroChoice;
     public bool hasSelectedAttack;
+    public bool hasEnded = false;
 
     [Header("Lists")]
     public List<GameObject> readyHeroes = new List<GameObject>();
@@ -265,9 +266,18 @@ public class BattleStateMachine : MonoBehaviour
                 {
                     hero.GetComponent<HeroStateMachine>().currentState = CharacterStateMachine.TurnState.WAITING;
                 }
+                if (!hasEnded)
+                {
+                    hasEnded = true;
+                    StartCoroutine(WonBattleCoroutine());
+                }
                 break;
             case BattleState.LOSE:
-                Debug.Log("You Lost");
+                Debug.Log("You Lost"); if (!hasEnded)
+                {
+                    hasEnded = true;
+                    StartCoroutine(LostBattleCoroutine());
+                }
                 break;
             default:
                 break;
@@ -556,7 +566,7 @@ public class BattleStateMachine : MonoBehaviour
             {
                 if (targetNum > 0)
                 {
-                    currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += "" + target.name;
+                    currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += ", " + target.name;
                 }
                 else currButton.transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>().text += target.name;
 
@@ -669,5 +679,26 @@ public class BattleStateMachine : MonoBehaviour
         hasSelectedAttack = false;
         readyHeroes[0].transform.Find("Selector").gameObject.SetActive(false);
         readyHeroes.RemoveAt(0);
+    }
+
+    IEnumerator WonBattleCoroutine()
+    {
+        SoundManager.Instance.PlayMusic(3);
+        yield return new WaitForSeconds(5f);
+        SoundManager.Instance.PlayMusic(1);
+        GameManager.Instance.FinishedMission();
+        GameManager.Instance.ResetCharacters();
+        LevelLoader.Instance.LoadScene("LobbyScene");
+    }
+
+    IEnumerator LostBattleCoroutine()
+    {
+        SoundManager.Instance.StopMusic();
+        attackNameUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Game Over...");
+        attackNameUI.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        GameManager.Instance.ResetCharacters();
+        attackNameUI.SetActive(false);
+        LevelLoader.Instance.LoadScene("Preload");
     }
 }

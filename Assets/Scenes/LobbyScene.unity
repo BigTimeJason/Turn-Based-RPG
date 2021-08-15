@@ -123,6 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &37112308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37112309}
+  m_Layer: 0
+  m_Name: Missions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &37112309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37112308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1837549784}
+  - {fileID: 1323196758}
+  - {fileID: 211755843}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &70134044
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +356,205 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &211755842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 211755843}
+  - component: {fileID: 211755846}
+  - component: {fileID: 211755845}
+  - component: {fileID: 211755844}
+  m_Layer: 0
+  m_Name: Mission 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &211755843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211755842}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 37112309}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211755844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211755842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73f74f69a495ac4fa2470fbc9a04536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: BattleScene
+  enemies:
+  - name: RX-12
+    slot: 1
+    xp: 0
+    offenseElement: 0
+    basePower: 600
+    currPower: 600
+    baseHP: 215
+    currHP: 215
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 11
+    currSpeed: 11
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
+  - name: RX-13
+    slot: 2
+    xp: 0
+    offenseElement: 0
+    basePower: 600
+    currPower: 600
+    baseHP: 215
+    currHP: 215
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 11
+    currSpeed: 11
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
+  - name: RX-14
+    slot: 3
+    xp: 0
+    offenseElement: 0
+    basePower: 600
+    currPower: 600
+    baseHP: 215
+    currHP: 215
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 11
+    currSpeed: 11
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
+  - name: RX-15
+    slot: 4
+    xp: 0
+    offenseElement: 0
+    basePower: 600
+    currPower: 600
+    baseHP: 215
+    currHP: 215
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 11
+    currSpeed: 11
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
+  level: 3
+  prerequisite: 0
+  canClick: 0
+--- !u!61 &211755845
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211755842}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.8828125}
+    newSize: {x: 1, y: 0.8828125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8828125}
+  m_EdgeRadius: 0
+--- !u!212 &211755846
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211755842}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 0.8828125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &252064172
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,31 +651,112 @@ MonoBehaviour:
   characterSpriteOne: {fileID: 919467077}
   characterSpriteTwo: {fileID: 1104736900}
   dialogueLines:
-  - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
-    isLeftSide: 1
-    characterName: Jelly-16
-    dialogue: C'mon, let's get out of here!
-    clip: {fileID: 0}
-  - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
-    isLeftSide: 1
-    characterName: Hydra
-    dialogue: My legs are moving!
-    clip: {fileID: 0}
-  - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
-    isLeftSide: 0
-    characterName: TX-45
-    dialogue: Targets in sight. TX-77, sending co-ordinates now.
-    clip: {fileID: 0}
-  - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
-    isLeftSide: 0
-    characterName: TX-77
-    dialogue: Way ahead of you.
-    clip: {fileID: 0}
-  - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
-    isLeftSide: 1
-    characterName: Jelly-16
-    dialogue: Oh sh-!
-    clip: {fileID: 0}
+  - levelDialogue:
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: Hurry up! We need to get out of here!
+      clip: {fileID: 8300000, guid: 01363167f8284bb45998cde7635dace0, type: 3}
+    - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+      isLeftSide: 1
+      characterName: Hydra
+      dialogue: They're right behind us!
+      clip: {fileID: 8300000, guid: 9a17a72cf6098a94cae2f8df84e6c97f, type: 3}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 0
+      characterName: TX-45
+      dialogue: I can see them. Sending co-ordinates your way TX-77
+      clip: {fileID: 8300000, guid: bc2b9c650a7ba8b4d9d706684e76f877, type: 3}
+    - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+      isLeftSide: 0
+      characterName: TX-77
+      dialogue: Way ahead of you.
+      clip: {fileID: 8300000, guid: 9f0f627c327617a47915988e70d34a4d, type: 3}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: Oh sh-!
+      clip: {fileID: 8300000, guid: bbb6e0c928f0f6247a7f9a693291b611, type: 3}
+  - levelDialogue:
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: Are you alright?
+      clip: {fileID: 8300000, guid: 3b204cfe662d3824992fb40d6590beee, type: 3}
+    - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+      isLeftSide: 1
+      characterName: Hydra
+      dialogue: We don't have time to talk right now!
+      clip: {fileID: 8300000, guid: 409d0a4c678c88e4da73cb6c6e2744b3, type: 3}
+    - characterImage: {fileID: 21300000, guid: 7bf000c66bb94604eae02fbf1ebd34cb, type: 3}
+      isLeftSide: 0
+      characterName: Killer Robot
+      dialogue: THREAT DETECTED. INITIATING COMBAT MODE.
+      clip: {fileID: 8300000, guid: 5ab666a7878396c47904f8672590138e, type: 3}
+  - levelDialogue:
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: There's no where to go!
+      clip: {fileID: 8300000, guid: 82bfcfb6681968043b79712d1d180b18, type: 3}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 0
+      characterName: SFX
+      dialogue: '*Footsteps running behind them*'
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+      isLeftSide: 1
+      characterName: Hydra
+      dialogue: You guys just don't give up, do ya?
+      clip: {fileID: 8300000, guid: 861e6b1961d97374ab997e45815a3421, type: 3}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 0
+      characterName: RX-12
+      dialogue: Hand over the Illixium, and we can talk about your... retribution.
+      clip: {fileID: 8300000, guid: 1cb2d5d3919449c4791ce6c71c232fc6, type: 3}
+    - characterImage: {fileID: 21300000, guid: 44bf2eecf75b944468033112b3f2542a, type: 3}
+      isLeftSide: 1
+      characterName: ???
+      dialogue: Now, now... We wouldn't want that to fall into the wrong hands, would
+        we?
+      clip: {fileID: 8300000, guid: 6c11d54e2f968ad4f8170146c86fdb15, type: 3}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: Who are... ?
+      clip: {fileID: 8300000, guid: 2e27e3bbfcee8fa4381a0f248af38f8e, type: 3}
+  - levelDialogue:
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: There's no where to go!
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 0
+      characterName: SFX
+      dialogue: '*Footsteps running behind them*'
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+      isLeftSide: 1
+      characterName: Hydra
+      dialogue: You guys just don't give up, do ya?
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 0
+      characterName: RX-12
+      dialogue: Hand over the Illixium, and we can talk about your... retribution.
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: 44bf2eecf75b944468033112b3f2542a, type: 3}
+      isLeftSide: 1
+      characterName: ???
+      dialogue: Now, now... We wouldn't want that to fall into the wrong hands, would
+        we?
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: Who are... ?
+      clip: {fileID: 0}
   textSpeed: 0.01
   spriteOneStartPos: {x: 0, y: 0, z: 0}
   spriteTwoStartPos: {x: 0, y: 0, z: 0}
@@ -833,6 +1146,151 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290291309}
   m_CullTransparentMesh: 1
+--- !u!1 &1323196757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1323196758}
+  - component: {fileID: 1323196761}
+  - component: {fileID: 1323196760}
+  - component: {fileID: 1323196759}
+  m_Layer: 0
+  m_Name: Mission 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1323196758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323196757}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 37112309}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323196759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323196757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73f74f69a495ac4fa2470fbc9a04536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: BattleScene
+  enemies:
+  - name: Killer Robot
+    slot: 1
+    xp: 0
+    offenseElement: 0
+    basePower: 1100
+    currPower: 1100
+    baseHP: 600
+    currHP: 600
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 10
+    currSpeed: 10
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: Rocket Barrage
+      actions:
+      - {fileID: 11400000, guid: 624dd185584f60d4e95d5b416bfdf85f, type: 2}
+  level: 2
+  prerequisite: 1
+  canClick: 0
+--- !u!61 &1323196760
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323196757}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.8828125}
+    newSize: {x: 1, y: 0.8828125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8828125}
+  m_EdgeRadius: 0
+--- !u!212 &1323196761
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323196757}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 0.8828125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &1574986656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1101,12 +1559,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837549782}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 37112309}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1837549785
 MonoBehaviour:
@@ -1121,6 +1579,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: BattleScene
+  enemies:
+  - name: TX-45
+    slot: 1
+    xp: 0
+    offenseElement: 0
+    basePower: 600
+    currPower: 600
+    baseHP: 215
+    currHP: 215
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 11
+    currSpeed: 11
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions: []
+  - name: TX-77
+    slot: 2
+    xp: 0
+    offenseElement: 0
+    basePower: 400
+    currPower: 400
+    baseHP: 215
+    currHP: 215
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 16
+    currSpeed: 16
+    weapon: {fileID: 11400000, guid: 1997765a295926a4fa0bc8f20b85ebff, type: 2}
+    availableActions: []
+  level: 1
+  prerequisite: 0
+  canClick: 0
 --- !u!61 &1837549786
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1157,6 +1649,10 @@ PrefabInstance:
     - target: {fileID: 2706342599915851616, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
       propertyPath: m_Name
       value: System_GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2706342599915851622, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
       propertyPath: m_RootOrder
@@ -1216,6 +1712,7 @@ GameObject:
   - component: {fileID: 2043859535}
   - component: {fileID: 2043859534}
   - component: {fileID: 2043859537}
+  - component: {fileID: 2043859538}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1240,8 +1737,8 @@ Camera:
   m_GameObject: {fileID: 2043859533}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.19014047, g: 0.12655748, b: 0.33962262, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1255,7 +1752,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -1282,7 +1779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043859533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1320,3 +1817,37 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &2043859538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043859533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []

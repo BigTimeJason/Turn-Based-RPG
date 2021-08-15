@@ -15,7 +15,8 @@ MonoBehaviour:
   targetType: 1
   element: 0
   actionName: Scout Rifle Shot
-  description: Fire a precise shot at long range.
+  description: Fire a precise shot at long range dealing 120% power. [3-4]
+  animation: Firing
   damage:
   - 1.2
   minRange: 3

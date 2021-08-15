@@ -52,9 +52,9 @@ public class SoundManager : MonoBehaviour
 		MusicSource.Play();
     }
 
-	public void StopMusic()
+	public void StopMusic(float fadeoutDuration = 0f)
     {
-		StartCoroutine(FadeOut(MusicSource, 1f));
+		StartCoroutine(FadeOut(MusicSource, fadeoutDuration));
     }
 
 	private IEnumerator FadeOut(AudioSource audioSource, float FadeTime)

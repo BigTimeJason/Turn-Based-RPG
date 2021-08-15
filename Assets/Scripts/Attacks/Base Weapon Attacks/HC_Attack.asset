@@ -15,7 +15,8 @@ MonoBehaviour:
   targetType: 1
   element: 0
   actionName: Hand Cannon Shot
-  description: Fire a precise shot at close range.
+  description: Fire a precise shot at close range dealing 120% power. [1-2]
+  animation: Firing
   damage:
   - 1.2
   minRange: 1

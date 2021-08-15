@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PR_Attack
   m_EditorClassIdentifier: 
   targetType: 1
-  element: 0
+  element: 1
   actionName: Pulse Rifle Burst
-  description: Fire a spray of bullets effects at all ranges.
+  description: Fire a spray of bullets effective at all ranges dealing 80% power.
+    [1-4]
+  animation: Firing
   damage:
   - 0.8
   minRange: 1

@@ -48,9 +48,16 @@ public class CharacterStateMachine : MonoBehaviour
         currentState = TurnState.PROCESSING;
         startPosition = transform.position;
 
-        Action meleeAttack = Action.CreateInstance<Action>();
-        meleeAttack.Init(TargetType.ENEMY, character.offenseElement, "Melee", "A melee attack", new float[] { 1.2f }, 1, 1);
-        character.availableActions.Add(new CharacterAction(new List<Action>() { meleeAttack }));
+        //character.availableActions.Clear();
+        //Action meleeAttack = Action.CreateInstance<Action>();
+        //meleeAttack.Init(TargetType.ENEMY, character.offenseElement, "Knife", "A melee attack, dealing 100% damage. [1]", new float[] { 1f }, 1, 1);
+        //character.availableActions.Add(new CharacterAction(new List<Action>() { meleeAttack }));
+        
+        //if (character.weapon != null)
+        //{
+        //    character.weapon.weaponAttack.element = character.weapon.element;
+        //    character.AddAction(new CharacterAction(new List<Action>() { character.weapon.weaponAttack }), character.weapon.weaponAttack.actionName);
+        //}
     }
 
     void Update()
@@ -240,28 +247,59 @@ public class CharacterStateMachine : MonoBehaviour
         {
             int option = 0;
             //Debug.Log("You selected an attack that hits multiple targets.");
-            for (int i = 0; i <= teams[targetedTeamIndex].Count - attack.damage.Length; i++)
+            if (teams[targetedTeamIndex].Count < attack.damage.Length)
             {
-                if (i >= attack.minRange - 1 && i <= attack.maxRange - 1)
+                for (int i = 0; i <= teams[targetedTeamIndex].Count; i++)
                 {
-                    eligibleTargets.Add(new List<GameObject>());
-                    for (int j = 0; j < attack.damage.Length; j++)
+                    if (i >= attack.minRange - 1 && i <= attack.maxRange - 1)
                     {
-                        if (attack.damage[j] != 0)
+                        eligibleTargets.Add(new List<GameObject>());
+                        for (int j = 0; j < attack.damage.Length; j++)
                         {
-                            //Debug.Log("This character was in range of this AoE attack: " + team[j + i].name);
-                            eligibleTargets[option].Add(teams[targetedTeamIndex][j + i]);
+                            if (attack.damage[j] != 0)
+                            {
+                                //Debug.Log("This character was in range of this AoE attack: " + team[j + i].name);
+                                if((j+i) < teams[targetedTeamIndex].Count)
+                                eligibleTargets[option].Add(teams[targetedTeamIndex][j + i]);
+                            }
+                            else
+                            {
+                                //Debug.Log("Character starting at position " + j + " (" + team[j + i].name + ") was in range, but the attack didn't have a damage value at this point.");
+                            }
                         }
-                        else
-                        {
-                            //Debug.Log("Character starting at position " + j + " (" + team[j + i].name + ") was in range, but the attack didn't have a damage value at this point.");
-                        }
+                        option++;
                     }
-                    option++;
+                    else
+                    {
+                        //Debug.Log("Character starting at position " + i + " was not in range.");
+                    }
                 }
-                else
+            }
+            else
+            {
+                for (int i = 0; i <= teams[targetedTeamIndex].Count - attack.damage.Length; i++)
                 {
-                    //Debug.Log("Character starting at position " + i + " was not in range.");
+                    if (i >= attack.minRange - 1 && i <= attack.maxRange - 1)
+                    {
+                        eligibleTargets.Add(new List<GameObject>());
+                        for (int j = 0; j < attack.damage.Length; j++)
+                        {
+                            if (attack.damage[j] != 0)
+                            {
+                                //Debug.Log("This character was in range of this AoE attack: " + team[j + i].name);
+                                eligibleTargets[option].Add(teams[targetedTeamIndex][j + i]);
+                            }
+                            else
+                            {
+                                //Debug.Log("Character starting at position " + j + " (" + team[j + i].name + ") was in range, but the attack didn't have a damage value at this point.");
+                            }
+                        }
+                        option++;
+                    }
+                    else
+                    {
+                        //Debug.Log("Character starting at position " + i + " was not in range.");
+                    }
                 }
             }
         }

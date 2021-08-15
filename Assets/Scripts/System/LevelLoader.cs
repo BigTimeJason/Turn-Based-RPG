@@ -28,30 +28,30 @@ public class LevelLoader : MonoBehaviour
     {
         transitionShape.gameObject.SetActive(true);
         transitionShape.localScale = new Vector3(30, 30, transitionTime);
+        transitionShape.DORotate(new Vector3(0, 0, 0), 1);
         transitionShape.DOScale(0, transitionTime).OnComplete(() =>
         {
             transitionShape.gameObject.SetActive(false);
         });
-        transitionShape.DORotate(new Vector3(0, 0, 0), 1).SetEase(Ease.InExpo);
     }
 
     public void LoadScene(int i)
     {
         transitionShape.gameObject.SetActive(true);
         transitionShape.localScale = new Vector3(0, 0, 0);
+        transitionShape.DORotate(new Vector3(0, 0, 800), transitionTime);
         transitionShape.DOScale(30, transitionTime).OnComplete(() => {
             SceneManager.LoadScene(i);
         });
-        transitionShape.DORotate(new Vector3(0, 0, 800), transitionTime).SetEase(Ease.InExpo);
     }
     public void LoadScene(string name)
     {
         transitionShape.gameObject.SetActive(true);
         transitionShape.localScale = new Vector3(0, 0, 1);
+        transitionShape.DORotate(new Vector3(0, 0, 800), transitionTime);
         transitionShape.DOScale(30, transitionTime).OnComplete(() =>
         {
             SceneManager.LoadScene(name);
         });
-        transitionShape.DORotate(new Vector3(0, 0, 800), transitionTime).SetEase(Ease.InExpo);
     }
 }

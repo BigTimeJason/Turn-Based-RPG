@@ -23,15 +23,6 @@ public class HeroStateMachine : CharacterStateMachine
         currentState = TurnState.PROCESSING;
         startPosition = transform.position;
 
-        Action meleeAttack = Action.CreateInstance<Action>();
-        meleeAttack.Init(TargetType.ENEMY, character.offenseElement, "Melee", "A melee attack", new float[] { 1.2f }, 1, 1);
-        character.availableActions.Add(new CharacterAction(new List<Action>() { meleeAttack }));
-
-        if (character.weapon != null)
-        {
-            character.weapon.weaponAttack.element = character.weapon.element;
-            character.AddAction(new CharacterAction(new List<Action>() { character.weapon.weaponAttack }), character.weapon.weaponAttack.actionName);
-        }
     }
 
     void Update()
@@ -70,7 +61,7 @@ public class HeroStateMachine : CharacterStateMachine
                     }
                 } else if (animator != null)
                 {
-                    animator.Play("Waiting");
+                    animator.Play("Ready");
                 }
                 break;
             case TurnState.SELECTING:

@@ -12,7 +12,7 @@ public class Dialogue : MonoBehaviour
     public GameObject blockClicks;
     public Image characterSpriteOne;
     public Image characterSpriteTwo;
-    public DialogueLine[] dialogueLines;
+    public LevelDialogue[] dialogueLines;
     public float textSpeed;
 
     public Vector3 spriteOneStartPos;
@@ -31,20 +31,26 @@ public class Dialogue : MonoBehaviour
         spriteTwoStartPos = characterSpriteTwo.gameObject.transform.position;
         characterSpriteTwo.transform.localScale = new Vector3(-1, 1);
 
-        StartDialogue();
+        if (dialogueLines[GameManager.Instance.level].levelDialogue?.Length > 0)
+        {
+            StartDialogue();
+        } else
+        {
+            Close();
+        }
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (dialogueLines[GameManager.Instance.level].levelDialogue?.Length > 0 && Input.GetMouseButtonDown(0))
         {
-            if (dialogue.text == dialogueLines[index].dialogue)
+            if (dialogue.text == dialogueLines[GameManager.Instance.level].levelDialogue[index].dialogue)
             {
                 NextLine();
             } else
             {
                 StopAllCoroutines();
-                dialogue.text = dialogueLines[index].dialogue;
+                dialogue.text = dialogueLines[GameManager.Instance.level].levelDialogue[index].dialogue;
             }
         }
     }
@@ -65,16 +71,16 @@ public class Dialogue : MonoBehaviour
         transform.localScale = new Vector3(0, 1);
         transform.DOScaleX(1, 0.2f).OnComplete(() =>
         {
-            ShowCharacter(dialogueLines[index].isLeftSide);
+            ShowCharacter(dialogueLines[GameManager.Instance.level].levelDialogue[index].isLeftSide);
             StartCoroutine(TypeLine());
         });
     }
 
     IEnumerator TypeLine()
     {
-        characterName.text = dialogueLines[index].characterName;
-        if(dialogueLines[index].clip != null) SoundManager.Instance.Play(dialogueLines[index].clip);
-        foreach(char c in dialogueLines[index].dialogue.ToCharArray())
+        characterName.text = dialogueLines[GameManager.Instance.level].levelDialogue[index].characterName;
+        if(dialogueLines[GameManager.Instance.level].levelDialogue[index].clip != null) SoundManager.Instance.Play(dialogueLines[GameManager.Instance.level].levelDialogue[index].clip);
+        foreach(char c in dialogueLines[GameManager.Instance.level].levelDialogue[index].dialogue.ToCharArray())
         {
             dialogue.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -89,7 +95,7 @@ public class Dialogue : MonoBehaviour
             characterSpriteOne.color = new Color(1, 1, 1, 1f);
             characterSpriteOne.gameObject.transform.position = spriteOneStartPos - new Vector3(0, 50);
             characterSpriteOne.gameObject.transform.DOMove(spriteOneStartPos, 0.2f);
-            characterSpriteOne.sprite = dialogueLines[index].characterImage;
+            characterSpriteOne.sprite = dialogueLines[GameManager.Instance.level].levelDialogue[index].characterImage;
             characterSpriteOne.SetNativeSize();
 
             characterSpriteTwo.color = new Color(0.4f, 0.4f, 0.4f, 1f);
@@ -99,7 +105,7 @@ public class Dialogue : MonoBehaviour
             characterSpriteTwo.color = new Color(1, 1, 1, 1f);
             characterSpriteTwo.gameObject.transform.position = spriteTwoStartPos - new Vector3(0, 50);
             characterSpriteTwo.gameObject.transform.DOMove(spriteTwoStartPos, 0.2f);
-            characterSpriteTwo.sprite = dialogueLines[index].characterImage;
+            characterSpriteTwo.sprite = dialogueLines[GameManager.Instance.level].levelDialogue[index].characterImage;
             characterSpriteTwo.SetNativeSize();
 
             characterSpriteOne.color = new Color(0.4f, 0.4f, 0.4f, 1f);
@@ -112,30 +118,35 @@ public class Dialogue : MonoBehaviour
         dialogue.text = string.Empty;
         characterName.text = string.Empty;
 
-        if (index < dialogueLines.Length - 1)
+        if (index < dialogueLines[GameManager.Instance.level].levelDialogue.Length - 1)
         {
             index++;
             dialogue.text = string.Empty;
-            ShowCharacter(dialogueLines[index].isLeftSide);
+            ShowCharacter(dialogueLines[GameManager.Instance.level].levelDialogue[index].isLeftSide);
             StartCoroutine(TypeLine());
         } else
         {
-            gameObject.transform.DOMoveY(-200, 1f);
-            gameObject.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f).OnComplete(() =>
+            Close();
+        }
+    }
+
+    void Close()
+    {
+        gameObject.transform.DOMoveY(-200, 1f);
+        gameObject.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f).OnComplete(() =>
+        {
+            characterSpriteOne.gameObject.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f);
+            characterSpriteOne.gameObject.transform.DOMoveX(-200, 1f).OnComplete(() =>
             {
-                characterSpriteOne.gameObject.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f);
-                characterSpriteOne.gameObject.transform.DOMoveX(-200, 1f).OnComplete(() =>
+                characterSpriteTwo.gameObject.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f);
+                characterSpriteTwo.gameObject.transform.DOMoveX(-200, 1f).OnComplete(() =>
                 {
-                    characterSpriteTwo.gameObject.GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), 0.5f);
-                    characterSpriteTwo.gameObject.transform.DOMoveX(-200, 1f).OnComplete(() =>
-                    {
-                        gameObject.SetActive(false);
-                        characterSpriteOne.gameObject.SetActive(false);
-                        characterSpriteTwo.gameObject.SetActive(false);
-                        blockClicks.SetActive(false);
-                    });
+                    gameObject.SetActive(false);
+                    characterSpriteOne.gameObject.SetActive(false);
+                    characterSpriteTwo.gameObject.SetActive(false);
+                    blockClicks.SetActive(false);
                 });
             });
-        }
+        });
     }
 }

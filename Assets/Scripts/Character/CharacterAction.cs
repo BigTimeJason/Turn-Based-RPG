@@ -8,7 +8,7 @@ public class CharacterAction
     public string name;
     public List<Action> actions = new List<Action>();
 
-    public CharacterAction(List<Action> actions, string name = "This is an attack")
+    public CharacterAction(List<Action> actions, string name = "Default Attack")
     {
         this.actions = actions;
         this.name = name;

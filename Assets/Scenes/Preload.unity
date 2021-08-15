@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271fb9578490e2b42b3b997d0107344f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconSound: {fileID: 0}
 --- !u!95 &90958802
 Animator:
   serializedVersion: 3
@@ -310,6 +311,118 @@ PrefabInstance:
       propertyPath: m_Name
       value: System_GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].name
+      value: Jelly-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].slot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].name
+      value: Hydra
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].slot
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].baseHP
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].currHP
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].baseHP
+      value: 278
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].currHP
+      value: 278
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 45ce16805b91e57409d7438a94e8047c, type: 2}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].basePower
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].baseSpeed
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].currPower
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].currSpeed
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].basePower
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].baseSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].currPower
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].currSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].availableActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].availableActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].availableActions.Array.data[0].name
+      value: Health Surge
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].availableActions.Array.data[0].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].availableActions.Array.data[1].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].availableActions.Array.data[0].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].availableActions.Array.data[0].actions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].availableActions.Array.data[1].actions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b185f970871a11a4b8b74a416c2783aa, type: 2}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[1].availableActions.Array.data[0].actions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7bc357a3133e924984c86bbffde72b3, type: 2}
     - target: {fileID: 2706342599915851622, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -527,5 +640,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: System_SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 682697565628420237, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
+      propertyPath: ost.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 682697565628420237, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
+      propertyPath: ost.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: bdfdc91c69e9d1d4dace0a627b9d3ffb, type: 3}
+    - target: {fileID: 682697565628420237, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
+      propertyPath: ost.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 44ec2f2089ab6604298dbbdc36ae1351, type: 3}
+    - target: {fileID: 682697565628420237, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
+      propertyPath: ost.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a228ee9fd08b6704f85e36975a70bf86, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}

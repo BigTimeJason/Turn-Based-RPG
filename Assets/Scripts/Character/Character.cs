@@ -47,4 +47,17 @@ public class Character
         this.shieldElement = shieldElement;
         this.offenseElement = offensiveElement;
     }
+
+    public void InitCharacter()
+    {
+        Action meleeAttack = Action.CreateInstance<Action>();
+        meleeAttack.Init(TargetType.ENEMY, offenseElement, "Knife", "A melee attack, dealing 100% damage. [1]", new float[] { 1f }, 1, 1);
+        availableActions.Add(new CharacterAction(new List<Action>() { meleeAttack }));
+
+        if (weapon != null)
+        {
+            weapon.weaponAttack.element = weapon.element;
+            AddAction(new CharacterAction(new List<Action>() { weapon.weaponAttack }), weapon.weaponAttack.actionName);
+        }
+    }
 }

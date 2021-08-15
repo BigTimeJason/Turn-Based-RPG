@@ -27,7 +27,14 @@ public class DamageNumbers : MonoBehaviour
     {
         GameObject curr = Instantiate(damageNumberPrefab, this.transform);
         curr.transform.position = target.transform.position;
-        curr.GetComponent<TextMeshProUGUI>().SetText("" + damage);
+        if(damage > 0)
+        {
+            curr.GetComponent<TextMeshProUGUI>().color = new Color(1,1,1);
+        } else
+        {
+            curr.GetComponent<TextMeshProUGUI>().color = new Color(0,1,0.1f);
+        }
+        curr.GetComponent<TextMeshProUGUI>().SetText("" + Mathf.Abs(damage));
         curr.transform.DOMoveY(curr.transform.position.y + 2, 3).OnComplete(() => { Destroy(curr); });
         curr.GetComponent<TextMeshProUGUI>().DOColor(new Color(0, 0, 0, 0), 1);
     }

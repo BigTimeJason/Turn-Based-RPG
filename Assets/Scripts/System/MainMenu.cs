@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
         {
             pressedButton = true;
             SoundManager.Instance.Play(playSound);
+            //SoundManager.Instance.StopMusic();
+            SoundManager.Instance.PlayMusic(1);
             LevelLoader.Instance.LoadScene("LobbyScene");
         }
     }
@@ -36,7 +38,7 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator ExitGameCoroutine()
     {
-        SoundManager.Instance.StopMusic();
+        SoundManager.Instance.StopMusic(1f);
         SoundManager.Instance.Play(exitSound);
         yield return new WaitForSeconds(2f);
         Application.Quit();

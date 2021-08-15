@@ -15,7 +15,9 @@ MonoBehaviour:
   targetType: 1
   element: 0
   actionName: Auto Rifle Spray
-  description: Fire a spray of bullets effective at close to mid ranges.
+  description: Fire a spray of bullets effective at close to mid ranges dealing 100%
+    power. [1-3]
+  animation: Firing
   damage:
   - 1
   minRange: 1
