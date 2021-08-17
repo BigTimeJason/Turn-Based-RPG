@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32a9c202a0091b4f83967b6ce19f510, type: 3}
+  m_Name: Fan the Hammer
+  m_EditorClassIdentifier: 
+  targetType: 1
+  element: 0
+  clip: {fileID: 0}
+  actionName: Fan the Hammer
+  description: Fan the hammer, dealing damage to all enemies based on how close they
+    are to you. [1-4]
+  animation: Firing
+  damage:
+  - 0.9
+  - 0.6
+  - 0.2
+  - 0.1
+  minRange: 1
+  maxRange: 1

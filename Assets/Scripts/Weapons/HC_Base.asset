@@ -17,4 +17,5 @@ MonoBehaviour:
   gunName: Hand Cannon
   description: Description of Hand Cannon
   flavourText: Flavour Text of Hand Cannon
+  gunSound: {fileID: 8300000, guid: 983fa9e4529811740a096fc1fdd28712, type: 3}
   weaponAttack: {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}

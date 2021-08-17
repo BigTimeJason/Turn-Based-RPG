@@ -6,6 +6,7 @@ using TMPro;
 
 public class EnemyStateMachine : CharacterStateMachine
 {
+
     void Update()
     {
         switch (currentState)
@@ -59,7 +60,7 @@ public class EnemyStateMachine : CharacterStateMachine
             atbProgress = 0;
             return;
         }
-        HandleTurn attack = new HandleTurn(character.name, "enemy", gameObject, PickTargetFromEligibleTargets(GetEligibleTargets(currentAttack)), currentAttack);
+        HandleTurn attack = new HandleTurn(character.charName, "enemy", gameObject, PickTargetFromEligibleTargets(GetEligibleTargets(currentAttack)), currentAttack);
         battleStateMachine.AddAction(attack);
     }
 }

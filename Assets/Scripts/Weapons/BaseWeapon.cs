@@ -19,5 +19,6 @@ public class BaseWeapon : ScriptableObject
     public string gunName = "Base Gun";
     public string description = "Gun Description";
     public string flavourText = "This is a cool gun that I use for testing.";
+    public AudioClip gunSound = null;
     public Action weaponAttack;
 }

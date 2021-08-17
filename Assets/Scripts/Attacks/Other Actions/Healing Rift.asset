@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   element: 0
+  clip: {fileID: 0}
   actionName: Healing Rift
-  description: Heal all friendly allies for 40% power. [1-4]
+  description: Heal all friendly allies for 60% power. [1-4]
   animation: Firing
   damage:
-  - -0.4
-  - -0.4
-  - -0.4
-  - -0.4
+  - -0.6
+  - -0.6
+  - -0.6
+  - -0.6
   minRange: 1
-  maxRange: 4
+  maxRange: 1

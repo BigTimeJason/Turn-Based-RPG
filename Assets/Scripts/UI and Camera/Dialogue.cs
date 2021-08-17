@@ -20,9 +20,11 @@ public class Dialogue : MonoBehaviour
     public Vector3 startPos;
 
     private int index;
+    private bool hasInitiated;
 
     private void Start()
     {
+        hasInitiated = false;
         dialogue.text = string.Empty;
         characterName.text = string.Empty;
 
@@ -47,7 +49,7 @@ public class Dialogue : MonoBehaviour
             if (dialogue.text == dialogueLines[GameManager.Instance.level].levelDialogue[index].dialogue)
             {
                 NextLine();
-            } else
+            } else if (hasInitiated == true)
             {
                 StopAllCoroutines();
                 dialogue.text = dialogueLines[GameManager.Instance.level].levelDialogue[index].dialogue;
@@ -69,9 +71,10 @@ public class Dialogue : MonoBehaviour
         characterSpriteTwo.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
 
         transform.localScale = new Vector3(0, 1);
-        transform.DOScaleX(1, 0.2f).OnComplete(() =>
+        transform.DOScaleX(1, 2f).OnComplete(() =>
         {
             ShowCharacter(dialogueLines[GameManager.Instance.level].levelDialogue[index].isLeftSide);
+            hasInitiated = true;
             StartCoroutine(TypeLine());
         });
     }
@@ -92,7 +95,8 @@ public class Dialogue : MonoBehaviour
         if (isCharacterOne)
         {
             characterSpriteOne.gameObject.SetActive(true);
-            characterSpriteOne.color = new Color(1, 1, 1, 1f);
+            characterSpriteOne.color = new Color(1, 1, 1, 0f);
+            characterSpriteOne.DOColor(new Color(1, 1, 1, 1f), 0.2f);
             characterSpriteOne.gameObject.transform.position = spriteOneStartPos - new Vector3(0, 50);
             characterSpriteOne.gameObject.transform.DOMove(spriteOneStartPos, 0.2f);
             characterSpriteOne.sprite = dialogueLines[GameManager.Instance.level].levelDialogue[index].characterImage;
@@ -102,7 +106,8 @@ public class Dialogue : MonoBehaviour
         } else
         {
             characterSpriteTwo.gameObject.SetActive(true);
-            characterSpriteTwo.color = new Color(1, 1, 1, 1f);
+            characterSpriteTwo.color = new Color(1, 1, 1, 0f);
+            characterSpriteTwo.DOColor(new Color(1, 1, 1, 1f), 0.2f);
             characterSpriteTwo.gameObject.transform.position = spriteTwoStartPos - new Vector3(0, 50);
             characterSpriteTwo.gameObject.transform.DOMove(spriteTwoStartPos, 0.2f);
             characterSpriteTwo.sprite = dialogueLines[GameManager.Instance.level].levelDialogue[index].characterImage;
@@ -144,7 +149,11 @@ public class Dialogue : MonoBehaviour
                     gameObject.SetActive(false);
                     characterSpriteOne.gameObject.SetActive(false);
                     characterSpriteTwo.gameObject.SetActive(false);
-                    blockClicks.SetActive(false);
+                    blockClicks.gameObject.GetComponent<Image>().color = new Color(0, 0, 0, 0.4f);
+                    blockClicks.gameObject.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f).OnComplete(() =>
+                    {
+                        blockClicks.SetActive(false);
+                    });
                 });
             });
         });

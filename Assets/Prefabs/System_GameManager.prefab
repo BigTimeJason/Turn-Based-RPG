@@ -43,7 +43,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e039daf7bb82f9143845c6b44eab0393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroes: []
+  heroes:
+  - charName: Jelly-16
+    slot: 1
+    xp: 0
+    spriteSheetName: Jelly_SpriteSheet
+    defaultSprite: {fileID: 0}
+    characterArt: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+    offenseElement: 0
+    basePower: 1000
+    currPower: 1000
+    baseHP: 345
+    currHP: 345
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 13
+    currSpeed: 13
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
+    - name: Gun Play
+      actions:
+      - {fileID: 11400000, guid: 16f5968c19004a244a82c8dba8667f13, type: 2}
+      - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
+  - charName: Hydra
+    slot: 2
+    xp: 0
+    spriteSheetName: Hydra_SpriteSheet
+    defaultSprite: {fileID: 0}
+    characterArt: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+    offenseElement: 0
+    basePower: 900
+    currPower: 900
+    baseHP: 278
+    currHP: 278
+    shieldElement: 0
+    shieldBaseHP: 0
+    shieldCurrHP: 0
+    baseSpeed: 18
+    currSpeed: 18
+    weapon: {fileID: 11400000, guid: 45ce16805b91e57409d7438a94e8047c, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: e2c191c5149ac964d9b2f4187d4a1d23, type: 2}
+    - name: Recover
+      actions:
+      - {fileID: 11400000, guid: c7bc357a3133e924984c86bbffde72b3, type: 2}
+      - {fileID: 11400000, guid: b185f970871a11a4b8b74a416c2783aa, type: 2}
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
   enemies: []
   level: 0
   missionLevel: 0

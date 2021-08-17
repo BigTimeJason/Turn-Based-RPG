@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 1
   element: 1
+  clip: {fileID: 8300000, guid: 20a5cdea52bcb2442a767a4ee416404c, type: 3}
   actionName: Pulse Rifle Burst
-  description: Fire a spray of bullets effective at all ranges dealing 80% power.
+  description: Fire a spray of bullets effective at all ranges dealing 95% power.
     [1-4]
-  animation: Firing
+  characterAnimation: Firing
+  specialEffect: 
   damage:
-  - 0.8
+  - 0.95
   minRange: 1
   maxRange: 4

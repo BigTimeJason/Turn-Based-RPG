@@ -37,7 +37,7 @@ public class CharacterStateMachine : MonoBehaviour
     void Start()
     {
         battleStateMachine = BattleStateMachine.Instance;
-        gameObject.name = character.name;
+        gameObject.name = character.charName;
         atbProgress = Random.Range(0, character.baseSpeed);
         animator = GetComponent<Animator>();
     }
@@ -47,6 +47,11 @@ public class CharacterStateMachine : MonoBehaviour
         selector.SetActive(false);
         currentState = TurnState.PROCESSING;
         startPosition = transform.position;
+
+        if(character.defaultSprite != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = character.defaultSprite;
+        }
 
         //character.availableActions.Clear();
         //Action meleeAttack = Action.CreateInstance<Action>();
@@ -190,6 +195,10 @@ public class CharacterStateMachine : MonoBehaviour
         else
         {
             character.currHP -= dmg;
+            if (character.currHP > character.baseHP)
+            {
+                character.currHP = character.baseHP;
+            }
         }
 
         DamageNumbers.Instance.Show(dmg, this.gameObject);
@@ -247,11 +256,12 @@ public class CharacterStateMachine : MonoBehaviour
         {
             int option = 0;
             //Debug.Log("You selected an attack that hits multiple targets.");
+            // If the attack has more targets than there are players on that team.
             if (teams[targetedTeamIndex].Count < attack.damage.Length)
             {
                 for (int i = 0; i <= teams[targetedTeamIndex].Count; i++)
                 {
-                    if (i >= attack.minRange - 1 && i <= attack.maxRange - 1)
+                    if (i >= attack.minRange - 1 && i < attack.maxRange)
                     {
                         eligibleTargets.Add(new List<GameObject>());
                         for (int j = 0; j < attack.damage.Length; j++)
@@ -279,7 +289,7 @@ public class CharacterStateMachine : MonoBehaviour
             {
                 for (int i = 0; i <= teams[targetedTeamIndex].Count - attack.damage.Length; i++)
                 {
-                    if (i >= attack.minRange - 1 && i <= attack.maxRange - 1)
+                    if (i >= attack.minRange - 1 && i < attack.maxRange)
                     {
                         eligibleTargets.Add(new List<GameObject>());
                         for (int j = 0; j < attack.damage.Length; j++)
@@ -317,6 +327,13 @@ public class CharacterStateMachine : MonoBehaviour
     {
         if (targets?.Any() == true)
         {
+            if (BattleStateMachine.Instance.turnList[0].attack.clip != null)
+            {
+                SoundManager.Instance.Play(BattleStateMachine.Instance.turnList[0].attack.clip);
+            } else if (character.weapon.gunSound != null)
+            {
+                SoundManager.Instance.Play(character.weapon.gunSound);
+            }
             LineEffects.Instance.Fire(gunBarrel.position, targets, character.weapon.element);
         }
     }

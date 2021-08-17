@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8774777088517460525, guid: 906d6ca2d2439ee42ab547fcde19b9bf, type: 3}
+  m_Sprite: {fileID: -3968182364789597635, guid: 906d6ca2d2439ee42ab547fcde19b9bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
     name: Hero 1
     slot: 1
     xp: 0
+    spriteSheetName: Character_SpriteSheet
     offenseElement: 0
     basePower: 0
     currPower: 0
@@ -159,9 +160,11 @@ MonoBehaviour:
   atbProgress: 0
   isAlive: 1
   actionStarted: 0
+  SpriteSheetName: 
   atb: {fileID: 0}
   healthUI: {fileID: 0}
   nameUI: {fileID: 0}
+  isRunning: 0
 --- !u!95 &-541615172222956363
 Animator:
   serializedVersion: 3

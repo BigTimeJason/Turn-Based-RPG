@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 0
+  m_YawDamping: 1
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &569490243
@@ -2000,9 +2000,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59.3031, y: 602.7245}
+  m_AnchoredPosition: {x: -226.7157, y: 650.03687}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.46911296, y: 1.0580782}
+  m_Pivot: {x: 0.3819189, y: 1.101886}
 --- !u!225 &1100470373
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2676,7 +2676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477159623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3410,11 +3410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.baseHP
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.currHP
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.weapon
@@ -3434,11 +3434,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.shieldBaseHP
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.shieldCurrHP
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.shieldElement
@@ -3446,7 +3446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.availableActions.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: character.availableAttacks.Array.size
@@ -3460,6 +3460,14 @@ PrefabInstance:
       propertyPath: character.availableAttacks.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 2100d31348770d343b6d341bb89735cb, type: 2}
+    - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
+      propertyPath: character.availableActions.Array.data[0].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759846657713662129, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
+      propertyPath: character.availableActions.Array.data[0].actions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e2c191c5149ac964d9b2f4187d4a1d23, type: 2}
     - target: {fileID: 2759846657713662132, guid: 7046a38fc67814847aa635e95a1826cc, type: 3}
       propertyPath: m_Name
       value: Dreg

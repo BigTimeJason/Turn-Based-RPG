@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 1
   element: 0
+  clip: {fileID: 8300000, guid: 983fa9e4529811740a096fc1fdd28712, type: 3}
   actionName: Hand Cannon Shot
   description: Fire a precise shot at close range dealing 120% power. [1-2]
-  animation: Firing
+  characterAnimation: SingleShot
+  specialEffect: 
   damage:
   - 1.2
   minRange: 1

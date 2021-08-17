@@ -17,4 +17,5 @@ MonoBehaviour:
   gunName: Auto Rifle
   description: Description of Auto Rifle
   flavourText: Flavour Text of Auto Rifle
+  gunSound: {fileID: 8300000, guid: 104099f97f6ebe44faa2c98341b26b2b, type: 3}
   weaponAttack: {fileID: 11400000, guid: 7e39ec5f04cd04646939906367536fa0, type: 2}

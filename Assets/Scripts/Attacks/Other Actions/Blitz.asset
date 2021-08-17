@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 1
   element: 0
+  clip: {fileID: 0}
   actionName: Blitz
   description: Blitz the enemy, dealing 40% power to all enemies
   animation: Rapidfire

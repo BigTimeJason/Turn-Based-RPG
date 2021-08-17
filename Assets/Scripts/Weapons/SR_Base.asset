@@ -17,4 +17,5 @@ MonoBehaviour:
   gunName: Scout Rifle
   description: Description of Scout Rifle
   flavourText: Flavour Text of Scout Rifle
+  gunSound: {fileID: 8300000, guid: 6c69522a1d088b44992f813d1d0b9f63, type: 3}
   weaponAttack: {fileID: 11400000, guid: 8b71770f0e39d024b9c1670b908bd583, type: 2}

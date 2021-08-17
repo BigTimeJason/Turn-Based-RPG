@@ -96,12 +96,16 @@ public class BattleStateMachine : MonoBehaviour
         {
             GameObject currHero = Instantiate(heroPrefab, GameObject.Find("Heroes").transform.position + new Vector3(6-hero.slot, 0, 0), Quaternion.identity);
             currHero.GetComponent<HeroStateMachine>().character = hero;
+            if (hero.spriteSheetName != null) currHero.GetComponent<HeroStateMachine>().SpriteSheetName = hero.spriteSheetName;
+            currHero.transform.localScale = new Vector3(1, 1, 1);
         }
 
         for(int i = 0; i < GameManager.Instance.enemies.Count; i++)
         {
             GameObject currEnemy = Instantiate(enemyPrefab, enemySlots[i]);
             currEnemy.GetComponent<EnemyStateMachine>().character = GameManager.Instance.enemies[i];
+            currEnemy.transform.localScale = new Vector3(-1, 1, 1);
+
         }
     }
 
@@ -255,7 +259,7 @@ public class BattleStateMachine : MonoBehaviour
                     }
                     else
                     {
-                        heroInput = HeroInputState.ACTIVATE;
+                        //heroInput = HeroInputState.ACTIVATE;
                     }
                     battleState = BattleState.WAIT;
                 }
@@ -264,7 +268,7 @@ public class BattleStateMachine : MonoBehaviour
                 Debug.Log("You Won");
                 foreach(GameObject hero in heroes)
                 {
-                    hero.GetComponent<HeroStateMachine>().currentState = CharacterStateMachine.TurnState.WAITING;
+                    hero.GetComponent<HeroStateMachine>().currentState = CharacterStateMachine.TurnState.WON;
                 }
                 if (!hasEnded)
                 {
@@ -484,8 +488,8 @@ public class BattleStateMachine : MonoBehaviour
                 List<Action> tempActions = characterActions[i].GetActions();
 
                 button.onClick.AddListener(() => GenerateActionButtons(tempActions));
-                button.GetComponent<TooltipTrigger>().header = characterActions[i].GetAction(0).actionName;
-                button.GetComponent<TooltipTrigger>().content = "Opens the menu for " + characterActions[i].GetAction(0).actionName;
+                button.GetComponent<TooltipTrigger>().header = characterActions[i].name;
+                button.GetComponent<TooltipTrigger>().content = "Opens the menu for " + characterActions[i].name;
             }
 
             currButton.transform.SetParent(actionPanel.transform.Find("Spacer"));

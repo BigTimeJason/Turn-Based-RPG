@@ -24,12 +24,12 @@ public class HandleTurn
 
     public string GetAttackerName()
     {
-        return this.attackerGameObject.GetComponent<CharacterStateMachine>().character.name;
+        return this.attackerGameObject.GetComponent<CharacterStateMachine>().character.charName;
     }
 
     public string GetTargetName(int i)
     {
-        if (i < targetGameObjects.Count) return this.targetGameObjects[i].GetComponent<CharacterStateMachine>().character.name;
+        if (i < targetGameObjects.Count) return this.targetGameObjects[i].GetComponent<CharacterStateMachine>().character.charName;
         return "error";
     }
 
@@ -38,7 +38,7 @@ public class HandleTurn
         List<string> names = new List<string>();
         foreach(GameObject target in targetGameObjects)
         {
-            names.Add(target.GetComponent<CharacterStateMachine>().character.name);
+            names.Add(target.GetComponent<CharacterStateMachine>().character.charName);
         }
         return names;
     }

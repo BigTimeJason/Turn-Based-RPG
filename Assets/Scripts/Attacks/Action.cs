@@ -6,12 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Action", menuName = "Attacks/New Action")]
 public class Action : ScriptableObject
 {
-    //public enum 
     public TargetType targetType = TargetType.ENEMY;
     public Element element = Element.KINETIC;
+    public AudioClip clip;
     public string actionName = "Base Attack";
     public string description = "This is a base attack, dealing damage.";
-    public string animation = "Firing";
+    public string characterAnimation = "Firing";
+    public string specialEffect;
     public float[] damage = new float[] { 1 };
     public int minRange = 1;
     public int maxRange = 4;
@@ -25,7 +26,7 @@ public class Action : ScriptableObject
         this.damage = damage;
         this.minRange = minRange;
         this.maxRange = maxRange;
-        this.animation = animation;
+        this.characterAnimation = animation;
     }
 
     public void Print()

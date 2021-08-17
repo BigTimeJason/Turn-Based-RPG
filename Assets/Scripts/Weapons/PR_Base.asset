@@ -17,4 +17,5 @@ MonoBehaviour:
   gunName: Pulse Rifle
   description: Description of Pulse Rifle
   flavourText: Flavour Text of Pulse Rifle
+  gunSound: {fileID: 8300000, guid: 20a5cdea52bcb2442a767a4ee416404c, type: 3}
   weaponAttack: {fileID: 11400000, guid: e2c191c5149ac964d9b2f4187d4a1d23, type: 2}

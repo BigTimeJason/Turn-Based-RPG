@@ -3,18 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class HeroStateMachine : CharacterStateMachine
 {
+    public string SpriteSheetName;
+    private string LoadedSpriteSheetName;
+    private Dictionary<string, Sprite> spriteSheet;
+
+    private SpriteRenderer spriteRenderer;
+    
+
     [Header("UI")]
     public Slider atb;
     public TextMeshProUGUI healthUI;
     public TextMeshProUGUI nameUI;
 
     public bool isRunning;
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        battleStateMachine = BattleStateMachine.Instance;
+        gameObject.name = character.charName;
+        atbProgress = Random.Range(0, character.baseSpeed);
+        animator = GetComponent<Animator>();
+
+    }
 
     public override void InitBattle()
     {
+        //this.LoadSpriteSheet();
         if (animator != null)
         {
             animator.Play("Idle");
@@ -69,7 +87,7 @@ public class HeroStateMachine : CharacterStateMachine
             case TurnState.ACTION:
                 if (animator != null)
                 {
-                    animator.Play(battleStateMachine.turnList[0].attack.animation);
+                    animator.Play(battleStateMachine.turnList[0].attack.characterAnimation);
                 }
                 StartCoroutine(TimeForAction());
                 break;
@@ -156,6 +174,10 @@ public class HeroStateMachine : CharacterStateMachine
         else
         {
             character.currHP -= dmg;
+            if (character.currHP > character.baseHP)
+            {
+                character.currHP = character.baseHP;
+            }
         }
         StartCoroutine(TakeDamageAnimation(dmg));
 
@@ -185,7 +207,7 @@ public class HeroStateMachine : CharacterStateMachine
     public void UpdateUI()
     {
         healthUI.text = "" + character.currHP;
-        nameUI.text = character.name;
+        nameUI.text = character.charName;
     }
 
     public void StartRun()
@@ -196,5 +218,25 @@ public class HeroStateMachine : CharacterStateMachine
     public void EndRun()
     {
         isRunning = false;
+    }
+
+    private void LateUpdate()
+    {
+        if (LoadedSpriteSheetName != SpriteSheetName)
+        {
+            LoadSpriteSheet();
+        }
+
+        //Debug.Log(spriteRenderer.sprite.name);
+        spriteRenderer.sprite = spriteSheet[spriteRenderer.sprite.name];
+    }
+
+    private void LoadSpriteSheet()
+    {
+        Sprite[] sprites = Resources.LoadAll<Sprite>("Character/" + SpriteSheetName);
+        spriteSheet = sprites.ToDictionary(x => x.name, x => x);
+
+        //Debug.Log(spriteSheet.TryGetValue(spriteRenderer.sprite.name, out debug));
+        LoadedSpriteSheetName = SpriteSheetName;
     }
 }

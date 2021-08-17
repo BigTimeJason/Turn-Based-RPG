@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 1
   element: 0
+  clip: {fileID: 8300000, guid: 104099f97f6ebe44faa2c98341b26b2b, type: 3}
   actionName: Auto Rifle Spray
   description: Fire a spray of bullets effective at close to mid ranges dealing 100%
     power. [1-3]
