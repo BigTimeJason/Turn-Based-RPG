@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Info
+  m_text: Character Info
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: BattleScene
   enemies:
-  - charName: 
+  - charName: RX-12
     slot: 1
     xp: 0
     spriteSheetName: 
@@ -560,7 +560,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
       - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
-  - charName: 
+  - charName: RX-13
     slot: 2
     xp: 0
     spriteSheetName: 
@@ -583,7 +583,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
       - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
-  - charName: 
+  - charName: RX-14
     slot: 3
     xp: 0
     spriteSheetName: 
@@ -606,7 +606,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
       - {fileID: 11400000, guid: e2c191c5149ac964d9b2f4187d4a1d23, type: 2}
-  - charName: 
+  - charName: RX-15
     slot: 4
     xp: 0
     spriteSheetName: 
@@ -2103,11 +2103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: BattleScene
   enemies:
-  - charName: 
+  - charName: Killer Robot
     slot: 1
     xp: 0
     spriteSheetName: 
-    defaultSprite: {fileID: 0}
+    defaultSprite: {fileID: 21300000, guid: d169e688c90e16b4c8ccd8b34d1e09b1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
     basePower: 1100
@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: BattleScene
   enemies:
-  - charName: 
+  - charName: TX-45
     slot: 1
     xp: 0
     spriteSheetName: 
@@ -2931,7 +2931,7 @@ MonoBehaviour:
       actions:
       - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
-  - charName: 
+  - charName: TX-77
     slot: 2
     xp: 0
     spriteSheetName: 

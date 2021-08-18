@@ -19,6 +19,7 @@ public class CharacterInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         startPos = transform.position;
         currCharacter = GameManager.Instance.heroes[charIndex];
+        UpdateInfo();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
