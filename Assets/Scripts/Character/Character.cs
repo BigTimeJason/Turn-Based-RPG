@@ -6,28 +6,55 @@ using UnityEngine;
 public class Character
 {
     public string charName;
+    public CharacterStatSheet characterStatSheet;
     public int slot;
     public int xp;
-    public string spriteSheetName;
-    public Sprite defaultSprite;
+    public string heroSpriteSheetName;
+    public Sprite enemySprite;
     public Sprite characterArt;
 
-    public Element offenseElement;
-    public float basePower;
-    public float currPower;
+    private Element offenseElement;
+    private float basePower;
+    private float currPower;
 
-    public float baseHP;
-    public float currHP;
+    private float maxHP;
+    private float currHP;
 
-    public Element shieldElement;
-    public float shieldBaseHP;
-    public float shieldCurrHP;
+    private Element shieldElement;
+    private float maxShieldHP;
+    private float currShieldHP;
 
-    public float baseSpeed;
-    public float currSpeed;
+    private float baseSpeed;
+    private float currSpeed;
+
+    private float baseDef;
+    private float currDef;
+
+    private float baseElemDef;
+    private float currElemDef;
+
+    private float baseLuck;
+    private float currLuck;
 
     public BaseWeapon weapon;
     public List<CharacterAction> availableActions = new List<CharacterAction>();
+
+    public Element OffenseElement { get => offenseElement; set => offenseElement = value; }
+    public float BasePower { get => basePower; set => basePower = value; }
+    public float CurrPower { get => currPower; set => currPower = value; }
+    public float MaxHP { get => maxHP; set => maxHP = value; }
+    public float CurrHP { get => currHP; set => currHP = value; }
+    public Element ShieldElement { get => shieldElement; set => shieldElement = value; }
+    public float MaxShieldHP { get => maxShieldHP; set => maxShieldHP = value; }
+    public float CurrShieldHP { get => currShieldHP; set => currShieldHP = value; }
+    public float BaseSpeed { get => baseSpeed; set => baseSpeed = value; }
+    public float CurrSpeed { get => currSpeed; set => currSpeed = value; }
+    public float BaseDef { get => baseDef; set => baseDef = value; }
+    public float CurrDef { get => currDef; set => currDef = value; }
+    public float BaseElemDef { get => baseElemDef; set => baseElemDef = value; }
+    public float CurrElemDef { get => currElemDef; set => currElemDef = value; }
+    public float BaseLuck { get => baseLuck; set => baseLuck = value; }
+    public float CurrLuck { get => currLuck; set => currLuck = value; }
 
     public void AddAction(CharacterAction action, string name)
     {
@@ -35,32 +62,55 @@ public class Character
         availableActions[availableActions.Count - 1].name = name;
     }
 
-    public Character(string name, int slot, float power, float hp, float speed, float shield = 0, Element shieldElement = Element.KINETIC, Element offensiveElement = Element.ARC)
+    // Use this if you know the character has an XP csv
+    public Character(string name, CharacterStatSheet characterStatSheet, int xp, Element shieldElement = Element.KINETIC, Element offensiveElement = Element.ARC)
     {
-        this.charName = name;
-        this.slot = slot;
-        this.basePower = power;
-        this.currPower = power;
-        this.baseHP = hp;
-        this.currHP = hp;
-        this.shieldBaseHP = shield;
-        this.shieldCurrHP = shield;
-        this.baseSpeed = speed;
-        this.currSpeed = speed;
-        this.shieldElement = shieldElement;
-        this.offenseElement = offensiveElement;
+        charName = name;
+        this.xp = xp;
+        this.characterStatSheet = characterStatSheet;
+        this.ShieldElement = shieldElement;
+        OffenseElement = offensiveElement;
+        InitCharacterStats();
     }
 
-    public void InitCharacter()
+    public Character(string name, CharacterStatSheet characterStatSheet, int slot, float power, float hp, float speed, float shield = 0, Element shieldElement = Element.KINETIC, Element offenseElement = Element.ARC)
     {
-        //Action meleeAttack = Action.CreateInstance<Action>();
-        //meleeAttack.Init(TargetType.ENEMY, offenseElement, "Knife", "A melee attack, dealing 100% damage. [1]", new float[] { 1f }, 1, 1);
-        //availableActions.Add(new CharacterAction(new List<Action>() { meleeAttack }));
+        charName = name;
+        this.characterStatSheet = characterStatSheet;
+        this.slot = slot;
+        BasePower = power;
+        CurrPower = power;
+        MaxHP = hp;
+        CurrHP = hp;
+        MaxShieldHP = shield;
+        CurrShieldHP = shield;
+        BaseSpeed = speed;
+        CurrSpeed = speed;
+        this.ShieldElement = shieldElement;
+        this.OffenseElement = offenseElement;
+    }
 
-        //if (weapon != null)
-        //{
-        //    weapon.weaponAttack.element = weapon.element;
-        //    AddAction(new CharacterAction(new List<Action>() { weapon.weaponAttack }), weapon.weaponAttack.actionName);
-        //}
+    public void InitCharacterStats()
+    {
+        BasePower = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[1]);
+        CurrPower = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[1]);
+
+        MaxHP = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[2]);
+        CurrHP = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[2]);
+
+        MaxShieldHP = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[3]);
+        CurrShieldHP = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[3]);
+
+        BaseSpeed = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[4]);
+        CurrSpeed = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[4]);
+
+        BaseDef = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[5]);
+        CurrDef = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[5]);
+
+        BaseElemDef = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[6]);
+        CurrElemDef = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[6]);
+
+        BaseLuck = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[7]);
+        CurrLuck = float.Parse(CSVReader.GetStatsFromLevel(characterStatSheet, xp / 100)[7]);
     }
 }

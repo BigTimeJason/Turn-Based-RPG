@@ -153,12 +153,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1799977217}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8562966
 MonoBehaviour:
@@ -538,21 +538,28 @@ MonoBehaviour:
   sceneName: BattleScene
   enemies:
   - charName: RX-12
+    characterStatSheet: 2
     slot: 1
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 600
-    currPower: 600
-    baseHP: 215
-    currHP: 215
+    basePower: 0
+    currPower: 0
+    maxHP: 0
+    currHP: 0
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
-    baseSpeed: 10
-    currSpeed: 10
+    maxShieldHP: 0
+    currShieldHP: 0
+    baseSpeed: 0
+    currSpeed: 0
+    baseDef: 0
+    currDef: 0
+    baseElemDef: 0
+    currElemDef: 0
+    baseLuck: 0
+    currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
     - name: All Actions
@@ -561,21 +568,28 @@ MonoBehaviour:
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
       - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
   - charName: RX-13
+    characterStatSheet: 2
     slot: 2
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 600
-    currPower: 600
-    baseHP: 215
-    currHP: 215
+    basePower: 0
+    currPower: 0
+    maxHP: 0
+    currHP: 0
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
-    baseSpeed: 11
-    currSpeed: 11
+    maxShieldHP: 0
+    currShieldHP: 0
+    baseSpeed: 0
+    currSpeed: 0
+    baseDef: 0
+    currDef: 0
+    baseElemDef: 0
+    currElemDef: 0
+    baseLuck: 0
+    currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
     - name: All Actions
@@ -584,21 +598,28 @@ MonoBehaviour:
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
       - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
   - charName: RX-14
+    characterStatSheet: 3
     slot: 3
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 600
-    currPower: 600
-    baseHP: 215
-    currHP: 215
+    basePower: 60
+    currPower: 0
+    maxHP: 0
+    currHP: 0
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
-    baseSpeed: 9
-    currSpeed: 9
+    maxShieldHP: 0
+    currShieldHP: 0
+    baseSpeed: 0
+    currSpeed: 0
+    baseDef: 0
+    currDef: 0
+    baseElemDef: 0
+    currElemDef: 0
+    baseLuck: 0
+    currLuck: 0
     weapon: {fileID: 11400000, guid: 45ce16805b91e57409d7438a94e8047c, type: 2}
     availableActions:
     - name: All Actions
@@ -607,21 +628,28 @@ MonoBehaviour:
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
       - {fileID: 11400000, guid: e2c191c5149ac964d9b2f4187d4a1d23, type: 2}
   - charName: RX-15
+    characterStatSheet: 3
     slot: 4
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 600
-    currPower: 600
-    baseHP: 215
-    currHP: 215
+    basePower: 0
+    currPower: 0
+    maxHP: 0
+    currHP: 0
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
-    baseSpeed: 11
-    currSpeed: 11
+    maxShieldHP: 0
+    currShieldHP: 0
+    baseSpeed: 0
+    currSpeed: 0
+    baseDef: 0
+    currDef: 0
+    baseElemDef: 0
+    currElemDef: 0
+    baseLuck: 0
+    currLuck: 0
     weapon: {fileID: 11400000, guid: 45ce16805b91e57409d7438a94e8047c, type: 2}
     availableActions:
     - name: All Actions
@@ -1343,7 +1371,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1799977217}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2104,21 +2132,28 @@ MonoBehaviour:
   sceneName: BattleScene
   enemies:
   - charName: Killer Robot
+    characterStatSheet: 4
     slot: 1
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 21300000, guid: d169e688c90e16b4c8ccd8b34d1e09b1, type: 3}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: d169e688c90e16b4c8ccd8b34d1e09b1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 1100
-    currPower: 1100
-    baseHP: 712
-    currHP: 712
+    basePower: 0
+    currPower: 0
+    maxHP: 0
+    currHP: 0
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
-    baseSpeed: 10
-    currSpeed: 10
+    maxShieldHP: 0
+    currShieldHP: 0
+    baseSpeed: 0
+    currSpeed: 0
+    baseDef: 0
+    currDef: 0
+    baseElemDef: 0
+    currElemDef: 0
+    baseLuck: 0
+    currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
     - name: All Moves
@@ -2256,6 +2291,10 @@ PrefabInstance:
     - target: {fileID: 682697565628420232, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 682697565628420235, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.656
       objectReference: {fileID: 0}
     - target: {fileID: 682697565628420236, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
       propertyPath: m_Name
@@ -2604,8 +2643,8 @@ RectTransform:
   m_Children:
   - {fileID: 1866728113}
   - {fileID: 1946977894}
-  - {fileID: 717579198}
   - {fileID: 8562965}
+  - {fileID: 717579198}
   - {fileID: 229146632}
   - {fileID: 1098023087}
   - {fileID: 514098561}
@@ -2910,21 +2949,28 @@ MonoBehaviour:
   sceneName: BattleScene
   enemies:
   - charName: TX-45
+    characterStatSheet: 2
     slot: 1
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
     basePower: 600
     currPower: 600
-    baseHP: 215
+    maxHP: 0
     currHP: 215
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
+    maxShieldHP: 0
+    currShieldHP: 0
     baseSpeed: 11
     currSpeed: 11
+    baseDef: 0
+    currDef: 0
+    baseElemDef: 0
+    currElemDef: 0
+    baseLuck: 0
+    currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
     - name: All Actions
@@ -2932,21 +2978,28 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
       - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
   - charName: TX-77
+    characterStatSheet: 2
     slot: 2
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
     basePower: 400
     currPower: 400
-    baseHP: 215
+    maxHP: 0
     currHP: 215
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
+    maxShieldHP: 0
+    currShieldHP: 0
     baseSpeed: 16
     currSpeed: 16
+    baseDef: 0
+    currDef: 0
+    baseElemDef: 0
+    currElemDef: 0
+    baseLuck: 0
+    currLuck: 0
     weapon: {fileID: 11400000, guid: 1997765a295926a4fa0bc8f20b85ebff, type: 2}
     availableActions:
     - name: All Actions

@@ -17,12 +17,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         level = 0;
+        //Character character = new Character("Jelly-16", CharacterStatSheet.JELLY, 0);
+        //Character character2 = new Character("Hydra", CharacterStatSheet.HYDRA, 0);
         foreach(Character hero in heroes)
         {
-            hero.InitCharacter();
+            hero.InitCharacterStats();
         }
-        //Character character = new Character("Jelly-16", 1, 1100, 345, 15, 0);
-        //Character character2 = new Character("Hydra-10", 2, 1100, 278, 20, 0);
 
         //heroes.Add(character);
         //heroes.Add(character2);
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         foreach(Character character in heroes)
         {
-            character.currHP = character.baseHP;
+            character.CurrHP = character.MaxHP;
         }
     }
 

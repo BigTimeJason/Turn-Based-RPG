@@ -36,8 +36,6 @@ public class EnemyStateMachine : CharacterStateMachine
                     battleStateMachine.enemies.Remove(gameObject);
                     selector.SetActive(false);
                     battleStateMachine.turnList.RemoveAll(turn => turn.attacker == gameObject.name);
-                    //battleStateMachine.GenerateTargetButtons();
-                    //battleStateMachine.battleState = BattleStateMachine.BattleState.CHECKALIVE;
                     battleStateMachine.CharacterDied(gameObject);
                     battleStateMachine.UpdateCharacterPositions();
                 }

@@ -38,7 +38,7 @@ public class CharacterStateMachine : MonoBehaviour
     {
         battleStateMachine = BattleStateMachine.Instance;
         gameObject.name = character.charName;
-        atbProgress = Random.Range(0, character.baseSpeed);
+        atbProgress = Random.Range(0, character.BaseSpeed * 2);
         animator = GetComponent<Animator>();
     }
 
@@ -48,21 +48,10 @@ public class CharacterStateMachine : MonoBehaviour
         currentState = TurnState.PROCESSING;
         startPosition = transform.position;
 
-        if(character.defaultSprite != null)
+        if(character.enemySprite != null)
         {
-            GetComponent<SpriteRenderer>().sprite = character.defaultSprite;
+            GetComponent<SpriteRenderer>().sprite = character.enemySprite;
         }
-
-        //character.availableActions.Clear();
-        //Action meleeAttack = Action.CreateInstance<Action>();
-        //meleeAttack.Init(TargetType.ENEMY, character.offenseElement, "Knife", "A melee attack, dealing 100% damage. [1]", new float[] { 1f }, 1, 1);
-        //character.availableActions.Add(new CharacterAction(new List<Action>() { meleeAttack }));
-        
-        //if (character.weapon != null)
-        //{
-        //    character.weapon.weaponAttack.element = character.weapon.element;
-        //    character.AddAction(new CharacterAction(new List<Action>() { character.weapon.weaponAttack }), character.weapon.weaponAttack.actionName);
-        //}
     }
 
     void Update()
@@ -110,7 +99,7 @@ public class CharacterStateMachine : MonoBehaviour
 
     public virtual void UpdateATB()
     {
-        atbProgress += Time.deltaTime * character.currSpeed;
+        atbProgress += Time.deltaTime * character.CurrSpeed;
 
         if (atbProgress >= 100)
         {
@@ -170,42 +159,42 @@ public class CharacterStateMachine : MonoBehaviour
 
     public virtual void TakeDamage(float dmg, Element element)
     {
-        if (character.shieldCurrHP > 0)
+        if (character.CurrShieldHP > 0)
         {
-            if (character.shieldElement == element)
+            if (character.ShieldElement == element)
             {
                 dmg = dmg * 2;
-                character.shieldCurrHP -= dmg;
-                if (character.shieldCurrHP <= 0)
+                character.CurrShieldHP -= dmg;
+                if (character.CurrShieldHP <= 0)
                 {
-                    character.shieldCurrHP = 0;
+                    character.CurrShieldHP = 0;
                     ParticleSystem.MainModule settings = shieldParticles.main;
                     settings.startColor = new ParticleSystem.MinMaxGradient(GetColours.GetColourOfElement(element));
                     shieldParticles.Play();
                 }
             } else
             {
-                character.shieldCurrHP -= dmg * 0.5f;
-                if (character.shieldCurrHP <= 0)
+                character.CurrShieldHP -= dmg * 0.5f;
+                if (character.CurrShieldHP <= 0)
                 {
-                    character.shieldCurrHP = 0;
+                    character.CurrShieldHP = 0;
                 }
             }
         }
         else
         {
-            character.currHP -= dmg;
-            if (character.currHP > character.baseHP)
+            character.CurrHP -= dmg;
+            if (character.CurrHP > character.MaxHP)
             {
-                character.currHP = character.baseHP;
+                character.CurrHP = character.MaxHP;
             }
         }
 
         DamageNumbers.Instance.Show(dmg, this.gameObject);
 
-        if (character.currHP <= 0)
+        if (character.CurrHP <= 0)
         {
-            character.currHP = 0;
+            character.CurrHP = 0;
             currentState = TurnState.DEAD;
         }
     }
@@ -220,7 +209,7 @@ public class CharacterStateMachine : MonoBehaviour
         {
             if (targets[i] != null)
             {
-                float dmg = battleStateMachine.turnList[0].attack.damage[i] * (character.currPower / 10) + (Random.Range(-character.currPower/100, character.currPower / 100));
+                float dmg = battleStateMachine.turnList[0].attack.damage[i] * (character.CurrPower / 10) + (Random.Range(-character.CurrPower/100, character.CurrPower / 100));
                 dmg = (int)dmg;
                 targets[i].GetComponent<CharacterStateMachine>().TakeDamage(dmg, battleStateMachine.turnList[0].attack.element);
             }

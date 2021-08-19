@@ -25,7 +25,7 @@ public class HeroStateMachine : CharacterStateMachine
         spriteRenderer = GetComponent<SpriteRenderer>();
         battleStateMachine = BattleStateMachine.Instance;
         gameObject.name = character.charName;
-        atbProgress = Random.Range(0, character.baseSpeed);
+        atbProgress = Random.Range(0, character.BaseSpeed);
         animator = GetComponent<Animator>();
 
     }
@@ -132,7 +132,7 @@ public class HeroStateMachine : CharacterStateMachine
 
     public override void UpdateATB()
     {
-        atbProgress += Time.deltaTime * character.currSpeed;
+        atbProgress += Time.deltaTime * character.CurrSpeed;
         UpdateATBUI();
 
         if(atbProgress >= 100)
@@ -148,15 +148,15 @@ public class HeroStateMachine : CharacterStateMachine
 
     public override void TakeDamage(float dmg, Element element)
     {
-        if (character.shieldCurrHP > 0)
+        if (character.CurrShieldHP > 0)
         {
-            if (character.shieldElement == element)
+            if (character.ShieldElement == element)
             {
                 dmg = dmg * 2;
-                character.shieldCurrHP -= dmg;
-                if (character.shieldCurrHP <= 0)
+                character.CurrShieldHP -= dmg;
+                if (character.CurrShieldHP <= 0)
                 {
-                    character.shieldCurrHP = 0;
+                    character.CurrShieldHP = 0;
                     ParticleSystem.MainModule settings = shieldParticles.main;
                     settings.startColor = new ParticleSystem.MinMaxGradient(GetColours.GetColourOfElement(element));
                     shieldParticles.Play();
@@ -164,31 +164,31 @@ public class HeroStateMachine : CharacterStateMachine
             }
             else
             {
-                character.shieldCurrHP -= dmg * 0.5f;
-                if (character.shieldCurrHP <= 0)
+                character.CurrShieldHP -= dmg * 0.5f;
+                if (character.CurrShieldHP <= 0)
                 {
-                    character.shieldCurrHP = 0;
+                    character.CurrShieldHP = 0;
                 }
             }
         }
         else
         {
-            character.currHP -= dmg;
-            if (character.currHP > character.baseHP)
+            character.CurrHP -= dmg;
+            if (character.CurrHP > character.MaxHP)
             {
-                character.currHP = character.baseHP;
+                character.CurrHP = character.MaxHP;
             }
         }
         StartCoroutine(TakeDamageAnimation(dmg));
 
         DamageNumbers.Instance.Show(dmg, this.gameObject);
 
-        if (character.currHP <= 0)
+        if (character.CurrHP <= 0)
         {
-            character.currHP = 0;
+            character.CurrHP = 0;
             currentState = TurnState.DEAD;
         }
-        healthUI.text = "" + character.currHP;
+        healthUI.text = "" + character.CurrHP;
     }
 
     IEnumerator TakeDamageAnimation(float dmg)
@@ -206,7 +206,7 @@ public class HeroStateMachine : CharacterStateMachine
 
     public void UpdateUI()
     {
-        healthUI.text = "" + character.currHP;
+        healthUI.text = "" + character.CurrHP;
         nameUI.text = character.charName;
     }
 
@@ -222,7 +222,7 @@ public class HeroStateMachine : CharacterStateMachine
 
     private void LateUpdate()
     {
-        if (LoadedSpriteSheetName != SpriteSheetName)
+        if (LoadedSpriteSheetName != SpriteSheetName && SpriteSheetName != null)
         {
             LoadSpriteSheet();
         }

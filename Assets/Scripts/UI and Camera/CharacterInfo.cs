@@ -37,10 +37,10 @@ public class CharacterInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         characterImage.sprite = currCharacter.characterArt;
         characterImage.SetNativeSize();
         charName.text = currCharacter.charName;
-        shields.text = "Shield: " + currCharacter.shieldCurrHP + "/" + currCharacter.shieldBaseHP + "(" + currCharacter.shieldElement + ")";
-        health.text = "Health: " + currCharacter.currHP + "/" + currCharacter.baseHP;
-        power.text = "Power: " + currCharacter.currPower + "";
-        speed.text = "Speed: " + currCharacter.currSpeed + "";
+        shields.text = "Shield: " + currCharacter.CurrShieldHP + "/" + currCharacter.MaxShieldHP + "(" + currCharacter.ShieldElement + ")";
+        health.text = "Health: " + currCharacter.CurrHP + "/" + currCharacter.MaxHP;
+        power.text = "Power: " + currCharacter.CurrPower + "";
+        speed.text = "Speed: " + currCharacter.CurrSpeed + "";
     }
 
     public void ChangeCharacter(bool increased)

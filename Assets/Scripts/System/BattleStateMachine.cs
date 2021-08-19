@@ -96,7 +96,7 @@ public class BattleStateMachine : MonoBehaviour
         {
             GameObject currHero = Instantiate(heroPrefab, GameObject.Find("Heroes").transform.position + new Vector3(6-hero.slot, 0, 0), Quaternion.identity);
             currHero.GetComponent<HeroStateMachine>().character = hero;
-            if (hero.spriteSheetName != null) currHero.GetComponent<HeroStateMachine>().SpriteSheetName = hero.spriteSheetName;
+            if (hero.heroSpriteSheetName != null) currHero.GetComponent<HeroStateMachine>().SpriteSheetName = hero.heroSpriteSheetName;
             currHero.transform.localScale = new Vector3(1, 1, 1);
         }
 
@@ -690,6 +690,9 @@ public class BattleStateMachine : MonoBehaviour
         SoundManager.Instance.PlayMusic(3);
         yield return new WaitForSeconds(5f);
         SoundManager.Instance.PlayMusic(1);
+
+        
+
         GameManager.Instance.FinishedMission();
         GameManager.Instance.ResetCharacters();
         LevelLoader.Instance.LoadScene("LobbyScene");
