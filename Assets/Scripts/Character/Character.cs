@@ -13,27 +13,36 @@ public class Character
     public Sprite enemySprite;
     public Sprite characterArt;
 
+    [SerializeField]
     private Element offenseElement;
     private float basePower;
+    [SerializeField]
     private float currPower;
 
     private float maxHP;
+    [SerializeField]
     private float currHP;
 
+    [SerializeField]
     private Element shieldElement;
     private float maxShieldHP;
+    [SerializeField]
     private float currShieldHP;
 
     private float baseSpeed;
+    [SerializeField]
     private float currSpeed;
 
     private float baseDef;
+    [SerializeField]
     private float currDef;
 
     private float baseElemDef;
+    [SerializeField]
     private float currElemDef;
 
     private float baseLuck;
+    [SerializeField]
     private float currLuck;
 
     public BaseWeapon weapon;

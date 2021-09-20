@@ -87,7 +87,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d83d1983ab95ea5448d9eb74629f7524, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,21 +136,24 @@ MonoBehaviour:
   gunBarrel: {fileID: 7095184405113809738}
   animator: {fileID: -541615172222956363}
   shieldParticles: {fileID: 6946946923625171235}
+  spriteRenderer: {fileID: 6230351063272627580}
   character:
-    name: Hero 1
+    charName: 
+    characterStatSheet: 0
     slot: 1
     xp: 0
-    spriteSheetName: Character_SpriteSheet
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 0}
+    characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 0
     currPower: 0
-    baseHP: 25
     currHP: 25
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
-    baseSpeed: 50
+    currShieldHP: 0
     currSpeed: 50
+    currDef: 0
+    currElemDef: 0
+    currLuck: 0
     weapon: {fileID: 0}
     availableActions: []
   currentState: 0

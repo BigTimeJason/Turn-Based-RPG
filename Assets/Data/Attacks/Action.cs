@@ -16,6 +16,8 @@ public class Action : ScriptableObject
     public float[] damage = new float[] { 1 };
     public int minRange = 1;
     public int maxRange = 4;
+    // 1 = push, 2 = pushAmount, 3 = pull, 4 = pullAmount, 5 = swap, 6 = pos1, 7 = pos2
+    public int[] statusEffects = new int[] { 0, 0, 0, 0, 0 };
 
     public void Init(TargetType targetType, Element element, string actionName, string description, float[] damage, int minRange, int maxRange, string animation = "Idle")
     {

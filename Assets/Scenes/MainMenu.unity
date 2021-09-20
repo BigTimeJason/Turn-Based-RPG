@@ -594,18 +594,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: System_SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 682697565628420237, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
-      propertyPath: ost.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 682697565628420237, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
-      propertyPath: ost.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: bdfdc91c69e9d1d4dace0a627b9d3ffb, type: 3}
-    - target: {fileID: 682697565628420237, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
-      propertyPath: ost.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 44ec2f2089ab6604298dbbdc36ae1351, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 884e2a728c3ba894f8f4878c55a73c2e, type: 3}
 --- !u!1001 &1505541829
@@ -618,6 +606,10 @@ PrefabInstance:
     - target: {fileID: 2706342599915851616, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
       propertyPath: m_Name
       value: System_GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706342599915851617, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
+      propertyPath: heroes.Array.data[0].xp
+      value: 9900
       objectReference: {fileID: 0}
     - target: {fileID: 2706342599915851622, guid: 7c9bea11f9a6f1346b0a2baec96d645e, type: 3}
       propertyPath: m_RootOrder

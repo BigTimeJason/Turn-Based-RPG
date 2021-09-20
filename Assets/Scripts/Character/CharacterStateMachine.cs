@@ -22,6 +22,7 @@ public class CharacterStateMachine : MonoBehaviour
     public Transform gunBarrel;
     public Animator animator;
     public ParticleSystem shieldParticles;
+    public SpriteRenderer spriteRenderer;
 
     [Header("STATS")]
     public Character character;
@@ -36,6 +37,7 @@ public class CharacterStateMachine : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         battleStateMachine = BattleStateMachine.Instance;
         gameObject.name = character.charName;
         atbProgress = Random.Range(0, character.BaseSpeed * 2);
@@ -47,10 +49,19 @@ public class CharacterStateMachine : MonoBehaviour
         selector.SetActive(false);
         currentState = TurnState.PROCESSING;
         startPosition = transform.position;
-
-        if(character.enemySprite != null)
+        if (character.enemySprite != null)
         {
             GetComponent<SpriteRenderer>().sprite = character.enemySprite;
+        }
+
+        spriteRenderer.material.SetColor("_Colour", GetColours.GetColourOfElement(character.ShieldElement));
+        if (character.CurrShieldHP > 0)
+        {
+            spriteRenderer.material.SetFloat("_Outline_Thickness", 1);
+        }
+        else
+        {
+            spriteRenderer.material.SetFloat("_Outline_Thickness", 0);
         }
     }
 
@@ -161,6 +172,7 @@ public class CharacterStateMachine : MonoBehaviour
     {
         if (character.CurrShieldHP > 0)
         {
+            //dmg /= character.CurrElemDef + 1;
             if (character.ShieldElement == element)
             {
                 dmg = dmg * 2;
@@ -209,9 +221,10 @@ public class CharacterStateMachine : MonoBehaviour
         {
             if (targets[i] != null)
             {
-                float dmg = battleStateMachine.turnList[0].attack.damage[i] * (character.CurrPower / 10) + (Random.Range(-character.CurrPower/100, character.CurrPower / 100));
+                float dmg = battleStateMachine.turnList[0].attack.damage[i] * (character.CurrPower) + (Random.Range(-character.CurrPower/ 10, character.CurrPower / 10));
                 dmg = (int)dmg;
                 targets[i].GetComponent<CharacterStateMachine>().TakeDamage(dmg, battleStateMachine.turnList[0].attack.element);
+
             }
         }
     }

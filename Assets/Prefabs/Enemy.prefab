@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d83d1983ab95ea5448d9eb74629f7524, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,22 +104,24 @@ MonoBehaviour:
   gunBarrel: {fileID: 0}
   animator: {fileID: 0}
   shieldParticles: {fileID: 3139268059071930055}
+  spriteRenderer: {fileID: 2759846657713662135}
   character:
-    name: Dreg
+    charName: 
+    characterStatSheet: 0
     slot: 0
     xp: 0
-    spriteSheetName: 
-    defaultSprite: {fileID: 0}
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 0}
+    characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 0
     currPower: 0
-    baseHP: 20
     currHP: 20
     shieldElement: 0
-    shieldBaseHP: 0
-    shieldCurrHP: 0
-    baseSpeed: 0.04
+    currShieldHP: 0
     currSpeed: 0.04
+    currDef: 0
+    currElemDef: 0
+    currLuck: 0
     weapon: {fileID: 0}
     availableActions: []
   currentState: 0

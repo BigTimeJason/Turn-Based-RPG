@@ -287,6 +287,7 @@ Transform:
   - {fileID: 1837549784}
   - {fileID: 1323196758}
   - {fileID: 211755843}
+  - {fileID: 772341919}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -517,7 +518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211755842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 37112309}
@@ -545,20 +546,13 @@ MonoBehaviour:
     enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 0
     currPower: 0
-    maxHP: 0
     currHP: 0
     shieldElement: 0
-    maxShieldHP: 0
     currShieldHP: 0
-    baseSpeed: 0
     currSpeed: 0
-    baseDef: 0
     currDef: 0
-    baseElemDef: 0
     currElemDef: 0
-    baseLuck: 0
     currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
@@ -575,20 +569,13 @@ MonoBehaviour:
     enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 0
     currPower: 0
-    maxHP: 0
     currHP: 0
     shieldElement: 0
-    maxShieldHP: 0
     currShieldHP: 0
-    baseSpeed: 0
     currSpeed: 0
-    baseDef: 0
     currDef: 0
-    baseElemDef: 0
     currElemDef: 0
-    baseLuck: 0
     currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
@@ -605,20 +592,13 @@ MonoBehaviour:
     enemySprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 60
     currPower: 0
-    maxHP: 0
     currHP: 0
     shieldElement: 0
-    maxShieldHP: 0
     currShieldHP: 0
-    baseSpeed: 0
     currSpeed: 0
-    baseDef: 0
     currDef: 0
-    baseElemDef: 0
     currElemDef: 0
-    baseLuck: 0
     currLuck: 0
     weapon: {fileID: 11400000, guid: 45ce16805b91e57409d7438a94e8047c, type: 2}
     availableActions:
@@ -635,20 +615,13 @@ MonoBehaviour:
     enemySprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 0
     currPower: 0
-    maxHP: 0
     currHP: 0
     shieldElement: 0
-    maxShieldHP: 0
     currShieldHP: 0
-    baseSpeed: 0
     currSpeed: 0
-    baseDef: 0
     currDef: 0
-    baseElemDef: 0
     currElemDef: 0
-    baseLuck: 0
     currLuck: 0
     weapon: {fileID: 11400000, guid: 45ce16805b91e57409d7438a94e8047c, type: 2}
     availableActions:
@@ -1202,6 +1175,31 @@ MonoBehaviour:
       characterName: Commander Icehowl
       dialogue: Sending a portal to your location. Meet you back at home.
       clip: {fileID: 8300000, guid: e692deef8795a8b47a660c07d6828a97, type: 3}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: '*Entering Portal*'
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+      isLeftSide: 1
+      characterName: Hydra
+      dialogue: Wait, what the-?
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: 8777e8993e126be49baea697f62dcd5f, type: 3}
+      isLeftSide: 0
+      characterName: Hydra?
+      dialogue: Surprised to see me?
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: 8562157893d75b5498bc8e44235218a2, type: 3}
+      isLeftSide: 0
+      characterName: Commander Icehowl
+      dialogue: 'Hand over the Illixium... or die. '
+      clip: {fileID: 0}
+    - characterImage: {fileID: 21300000, guid: f15e0c44eb30db540bec61424c3f098e, type: 3}
+      isLeftSide: 1
+      characterName: Jelly-16
+      dialogue: ...
+      clip: {fileID: 0}
   - levelDialogue: []
   textSpeed: 0.01
   spriteOneStartPos: {x: 0, y: 0, z: 0}
@@ -1475,6 +1473,217 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717579197}
   m_CullTransparentMesh: 1
+--- !u!1 &772341918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772341919}
+  - component: {fileID: 772341922}
+  - component: {fileID: 772341921}
+  - component: {fileID: 772341920}
+  m_Layer: 0
+  m_Name: Mission 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772341919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772341918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 37112309}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &772341920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772341918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73f74f69a495ac4fa2470fbc9a04536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: BattleScene
+  enemies:
+  - charName: Jelly?
+    characterStatSheet: 0
+    slot: 1
+    xp: 0
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
+    characterArt: {fileID: 0}
+    offenseElement: 0
+    currPower: 0
+    currHP: 0
+    shieldElement: 0
+    currShieldHP: 0
+    currSpeed: 0
+    currDef: 0
+    currElemDef: 0
+    currLuck: 0
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
+    - name: Gun Play
+      actions:
+      - {fileID: 11400000, guid: 16f5968c19004a244a82c8dba8667f13, type: 2}
+      - {fileID: 11400000, guid: f09737b48b10f454887e55e3804c4447, type: 2}
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
+  - charName: Hydra?
+    characterStatSheet: 1
+    slot: 2
+    xp: 0
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
+    characterArt: {fileID: 0}
+    offenseElement: 0
+    currPower: 0
+    currHP: 0
+    shieldElement: 0
+    currShieldHP: 0
+    currSpeed: 0
+    currDef: 0
+    currElemDef: 0
+    currLuck: 0
+    weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: e2c191c5149ac964d9b2f4187d4a1d23, type: 2}
+    - name: Recover
+      actions:
+      - {fileID: 11400000, guid: c7bc357a3133e924984c86bbffde72b3, type: 2}
+      - {fileID: 11400000, guid: b185f970871a11a4b8b74a416c2783aa, type: 2}
+    - name: 
+      actions:
+      - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
+  - charName: Commander Icehowl?
+    characterStatSheet: 5
+    slot: 4
+    xp: 0
+    heroSpriteSheetName: 
+    enemySprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
+    characterArt: {fileID: 0}
+    offenseElement: 0
+    currPower: 0
+    currHP: 0
+    shieldElement: 1
+    currShieldHP: 0
+    currSpeed: 0
+    currDef: 0
+    currElemDef: 0
+    currLuck: 0
+    weapon: {fileID: 11400000, guid: 45ce16805b91e57409d7438a94e8047c, type: 2}
+    availableActions:
+    - name: All Actions
+      actions:
+      - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
+      - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
+      - {fileID: 11400000, guid: d450cb410c6041040b87986f6fab99ff, type: 2}
+      - {fileID: 11400000, guid: 2fa695f963d17894d9343ecfe3d705ec, type: 2}
+      - {fileID: 11400000, guid: 2fa695f963d17894d9343ecfe3d705ec, type: 2}
+      - {fileID: 11400000, guid: 2fa695f963d17894d9343ecfe3d705ec, type: 2}
+      - {fileID: 11400000, guid: 624dd185584f60d4e95d5b416bfdf85f, type: 2}
+      - {fileID: 11400000, guid: 624dd185584f60d4e95d5b416bfdf85f, type: 2}
+  level: 4
+  prerequisite: 0
+  canClick: 0
+--- !u!61 &772341921
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772341918}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.8828125}
+    newSize: {x: 1, y: 0.8828125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8828125}
+  m_EdgeRadius: 0
+--- !u!212 &772341922
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772341918}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
+  m_Color: {r: 0.9811321, g: 0.31007475, b: 0.31007475, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 0.8828125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &878341383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,7 +2320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323196757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 37112309}
@@ -2139,20 +2348,13 @@ MonoBehaviour:
     enemySprite: {fileID: 21300000, guid: d169e688c90e16b4c8ccd8b34d1e09b1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 0
     currPower: 0
-    maxHP: 0
     currHP: 0
     shieldElement: 0
-    maxShieldHP: 0
     currShieldHP: 0
-    baseSpeed: 0
     currSpeed: 0
-    baseDef: 0
     currDef: 0
-    baseElemDef: 0
     currElemDef: 0
-    baseLuck: 0
     currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
@@ -2928,7 +3130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837549782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 37112309}
@@ -2956,20 +3158,13 @@ MonoBehaviour:
     enemySprite: {fileID: 21300000, guid: 1677e287e31c39744848613977aa662a, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 600
     currPower: 600
-    maxHP: 0
     currHP: 215
     shieldElement: 0
-    maxShieldHP: 0
     currShieldHP: 0
-    baseSpeed: 11
     currSpeed: 11
-    baseDef: 0
     currDef: 0
-    baseElemDef: 0
     currElemDef: 0
-    baseLuck: 0
     currLuck: 0
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
     availableActions:
@@ -2985,20 +3180,13 @@ MonoBehaviour:
     enemySprite: {fileID: 21300000, guid: 1abc8a853c387f645ba7457a2f94dfb1, type: 3}
     characterArt: {fileID: 0}
     offenseElement: 0
-    basePower: 400
     currPower: 400
-    maxHP: 0
     currHP: 215
     shieldElement: 0
-    maxShieldHP: 0
     currShieldHP: 0
-    baseSpeed: 16
     currSpeed: 16
-    baseDef: 0
     currDef: 0
-    baseElemDef: 0
     currElemDef: 0
-    baseLuck: 0
     currLuck: 0
     weapon: {fileID: 11400000, guid: 1997765a295926a4fa0bc8f20b85ebff, type: 2}
     availableActions:

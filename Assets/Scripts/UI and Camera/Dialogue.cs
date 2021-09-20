@@ -120,8 +120,11 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
-        dialogue.text = string.Empty;
-        characterName.text = string.Empty;
+        if (dialogueLines[GameManager.Instance.level].levelDialogue.Length - 1 != index)
+        {
+            dialogue.text = string.Empty;
+            characterName.text = string.Empty;
+        }
 
         if (index < dialogueLines[GameManager.Instance.level].levelDialogue.Length - 1)
         {

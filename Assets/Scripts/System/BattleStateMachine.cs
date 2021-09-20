@@ -5,7 +5,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class BattleStateMachine : MonoBehaviour
 {
     private static BattleStateMachine _instance;
@@ -73,7 +72,11 @@ public class BattleStateMachine : MonoBehaviour
     public GameObject targetPanelButton;
     public GameObject attackNameUI;
     public GameObject runButton;
+    public GameObject battleUI;
     public float animTime;
+
+    public GameObject postGameUI;
+    public GameObject characterXPUI;
 
     [Header("Camera")]
     public BattleCamera battleCamera;
@@ -98,6 +101,8 @@ public class BattleStateMachine : MonoBehaviour
             currHero.GetComponent<HeroStateMachine>().character = hero;
             if (hero.heroSpriteSheetName != null) currHero.GetComponent<HeroStateMachine>().SpriteSheetName = hero.heroSpriteSheetName;
             currHero.transform.localScale = new Vector3(1, 1, 1);
+            currHero.transform.position = currHero.transform.position - new Vector3(5, 0, 0);
+            currHero.GetComponent<HeroStateMachine>().InitBattle();
         }
 
         for(int i = 0; i < GameManager.Instance.enemies.Count; i++)
@@ -105,7 +110,7 @@ public class BattleStateMachine : MonoBehaviour
             GameObject currEnemy = Instantiate(enemyPrefab, enemySlots[i]);
             currEnemy.GetComponent<EnemyStateMachine>().character = GameManager.Instance.enemies[i];
             currEnemy.transform.localScale = new Vector3(-1, 1, 1);
-
+            currEnemy.GetComponent<EnemyStateMachine>().InitBattle();
         }
     }
 
@@ -123,6 +128,9 @@ public class BattleStateMachine : MonoBehaviour
 
     void InitUI()
     {
+        postGameUI.SetActive(false);
+        battleUI.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -300, 0);
+        battleUI.GetComponent<RectTransform>().DOAnchorPosY(0, 1f);
         GenerateHeroPanels();
         actionPanel.SetActive(false);
         targetPanel.SetActive(false);
@@ -138,22 +146,10 @@ public class BattleStateMachine : MonoBehaviour
     {
         foreach (GameObject hero in heroes)
         {
-            hero.transform.position = hero.transform.position - new Vector3(5, 0, 0);
-        }
-        foreach (GameObject enemy in enemies)
-        {
-            enemy.GetComponent<EnemyStateMachine>().InitBattle();
-        }
-        foreach (GameObject hero in heroes)
-        {
-            hero.transform.DOMoveX(hero.transform.position.x + 5, 0.5f).OnComplete(() =>
-            {
-                hero.GetComponent<HeroStateMachine>().InitBattle();
-            });
+            hero.transform.DOMoveX(hero.transform.position.x + 5, 0.5f);
             yield return new WaitForSeconds(0.5f);
         }
         battleState = BattleState.WAIT;
-        //UpdateCharacterPositions();
         InitCamera();
     }
 
@@ -174,6 +170,17 @@ public class BattleStateMachine : MonoBehaviour
 
     void Update()
     {
+        if(hasEnded && Input.GetMouseButtonDown(0))
+        {
+            postGameUI.transform.DOScaleX(0, 1f).OnComplete(() =>
+            {
+                SoundManager.Instance.PlayMusic(1);
+                GameManager.Instance.FinishedMission();
+                GameManager.Instance.ResetCharacters();
+                LevelLoader.Instance.LoadScene("LobbyScene");
+            });
+            
+        }
         switch (battleState)
         {
             case BattleState.PRELOAD:
@@ -273,7 +280,7 @@ public class BattleStateMachine : MonoBehaviour
                 if (!hasEnded)
                 {
                     hasEnded = true;
-                    StartCoroutine(WonBattleCoroutine());
+                    WonBattle(); 
                 }
                 break;
             case BattleState.LOSE:
@@ -685,17 +692,31 @@ public class BattleStateMachine : MonoBehaviour
         readyHeroes.RemoveAt(0);
     }
 
-    IEnumerator WonBattleCoroutine()
+    public void WonBattle()
     {
         SoundManager.Instance.PlayMusic(3);
-        yield return new WaitForSeconds(5f);
-        SoundManager.Instance.PlayMusic(1);
 
-        
+        battleUI.GetComponent<RectTransform>().DOAnchorPosY(-300, 1f);
 
-        GameManager.Instance.FinishedMission();
-        GameManager.Instance.ResetCharacters();
-        LevelLoader.Instance.LoadScene("LobbyScene");
+        postGameUI.SetActive(true);
+        postGameUI.transform.localScale = new Vector3(0, 1, 1);
+        postGameUI.transform.DOScaleX(1, 1f);
+
+        Debug.Log(GameManager.Instance.heroes.Count);
+        foreach (Character character in GameManager.Instance.heroes)
+        {
+            Debug.Log(character.charName);
+            GameObject characterXP = Instantiate(characterXPUI, postGameUI.transform);
+            characterXP.transform.Find("Mask/Portrait").GetComponent<Image>().sprite = character.characterArt;
+            characterXP.transform.Find("Mask/Portrait").GetComponent<Image>().SetNativeSize();
+
+            characterXP.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = character.charName;
+            characterXP.transform.Find("XP").GetComponent<TextMeshProUGUI>().text = "XP: " + character.xp;
+            characterXP.transform.Find("XPtoNext").GetComponent<TextMeshProUGUI>().text = "Next Level: " + ((Mathf.Ceil(character.xp / 100) * 100) - character.xp);
+            characterXP.transform.Find("Level").GetComponent<TextMeshProUGUI>().text = "Lv. " + Mathf.Floor(character.xp / 100);
+            //postGameUI.gameObject.transform.Find("Level Up").GetComponent<TextMeshProUGUI>().text = character.charName;
+        }
+        //LevelLoader.Instance.LoadScene("LobbyScene");
     }
 
     IEnumerator LostBattleCoroutine()
@@ -704,6 +725,7 @@ public class BattleStateMachine : MonoBehaviour
         attackNameUI.GetComponentInChildren<TextMeshProUGUI>().SetText("Game Over...");
         attackNameUI.SetActive(true);
         yield return new WaitForSeconds(5f);
+        battleUI.GetComponent<RectTransform>().transform.DOMoveY(-300, 1f);
         GameManager.Instance.ResetCharacters();
         attackNameUI.SetActive(false);
         LevelLoader.Instance.LoadScene("Preload");

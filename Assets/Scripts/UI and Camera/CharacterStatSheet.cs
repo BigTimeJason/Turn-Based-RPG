@@ -8,5 +8,6 @@ public enum CharacterStatSheet
     HYDRA,
     TX,
     RX,
-    KILLERBOT
+    KILLERBOT,
+    ICEHOWL
 }

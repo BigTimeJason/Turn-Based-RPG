@@ -11,36 +11,20 @@ public class HeroStateMachine : CharacterStateMachine
     private string LoadedSpriteSheetName;
     private Dictionary<string, Sprite> spriteSheet;
 
-    private SpriteRenderer spriteRenderer;
-    
-
     [Header("UI")]
     public Slider atb;
     public TextMeshProUGUI healthUI;
     public TextMeshProUGUI nameUI;
 
     public bool isRunning;
-    void Start()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        battleStateMachine = BattleStateMachine.Instance;
-        gameObject.name = character.charName;
-        atbProgress = Random.Range(0, character.BaseSpeed);
-        animator = GetComponent<Animator>();
-
-    }
 
     public override void InitBattle()
     {
-        //this.LoadSpriteSheet();
         if (animator != null)
         {
             animator.Play("Idle");
         }
-        selector.SetActive(false);
-        currentState = TurnState.PROCESSING;
-        startPosition = transform.position;
-
+        base.InitBattle();
     }
 
     void Update()
@@ -79,7 +63,7 @@ public class HeroStateMachine : CharacterStateMachine
                     }
                 } else if (animator != null)
                 {
-                    animator.Play("Ready");
+                    //animator.Play("Ready");
                 }
                 break;
             case TurnState.SELECTING:
@@ -148,46 +132,8 @@ public class HeroStateMachine : CharacterStateMachine
 
     public override void TakeDamage(float dmg, Element element)
     {
-        if (character.CurrShieldHP > 0)
-        {
-            if (character.ShieldElement == element)
-            {
-                dmg = dmg * 2;
-                character.CurrShieldHP -= dmg;
-                if (character.CurrShieldHP <= 0)
-                {
-                    character.CurrShieldHP = 0;
-                    ParticleSystem.MainModule settings = shieldParticles.main;
-                    settings.startColor = new ParticleSystem.MinMaxGradient(GetColours.GetColourOfElement(element));
-                    shieldParticles.Play();
-                }
-            }
-            else
-            {
-                character.CurrShieldHP -= dmg * 0.5f;
-                if (character.CurrShieldHP <= 0)
-                {
-                    character.CurrShieldHP = 0;
-                }
-            }
-        }
-        else
-        {
-            character.CurrHP -= dmg;
-            if (character.CurrHP > character.MaxHP)
-            {
-                character.CurrHP = character.MaxHP;
-            }
-        }
+        base.TakeDamage(dmg, element);
         StartCoroutine(TakeDamageAnimation(dmg));
-
-        DamageNumbers.Instance.Show(dmg, this.gameObject);
-
-        if (character.CurrHP <= 0)
-        {
-            character.CurrHP = 0;
-            currentState = TurnState.DEAD;
-        }
         healthUI.text = "" + character.CurrHP;
     }
 

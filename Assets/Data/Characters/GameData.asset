@@ -30,6 +30,7 @@ MonoBehaviour:
     baseSpeed: 13
     currSpeed: 13
     weapon: {fileID: 11400000, guid: 09f18eb51751324458b86074f4e72fcf, type: 2}
+    availableActions:
     - name: 
       actions:
       - {fileID: 11400000, guid: 4b5588da42fcff84589ea941daf3b322, type: 2}
